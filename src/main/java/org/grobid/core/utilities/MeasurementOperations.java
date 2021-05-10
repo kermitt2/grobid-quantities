@@ -1,15 +1,22 @@
 package org.grobid.core.utilities;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.grobid.core.data.Measurement;
 import org.grobid.core.data.Quantity;
 import org.grobid.core.data.Unit;
 import org.grobid.core.data.UnitDefinition;
 import org.grobid.core.data.normalization.UnitNormalizer;
+import org.grobid.core.layout.LayoutToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
 /**
  * Measurement operations and utilities class
@@ -21,6 +28,7 @@ public class MeasurementOperations {
 
     public MeasurementOperations() {
 
+        un = new UnitNormalizer();
     }
 
     public MeasurementOperations(UnitNormalizer un) {
@@ -211,6 +219,127 @@ public class MeasurementOperations {
                 rawUnit.setUnitDefinition(foundUnit);
             }
         }
+    }
+
+    public static int WINDOW_TC = 20;
+
+    /* We work with offsets (so no need to increase by size of the text) and we return indexes in the token list */
+    protected Pair<Integer, Integer> getExtremitiesAsIndex(List<LayoutToken> tokens, int centroidOffsetLower, int centroidOffsetHigher) {
+        return getExtremitiesAsIndex(tokens, centroidOffsetLower, centroidOffsetHigher, WINDOW_TC);
+    }
+
+
+    protected Pair<Integer, Integer> getExtremitiesAsIndex(List<LayoutToken> tokens, int centroidOffsetLower, int centroidOffsetHigher, int windowlayoutTokensSize) {
+        int start = 0;
+        int end = tokens.size() - 1;
+
+        List<LayoutToken> centralTokens = tokens.stream().filter(layoutToken -> layoutToken.getOffset() == centroidOffsetLower || (layoutToken.getOffset() > centroidOffsetLower && layoutToken.getOffset() < centroidOffsetHigher)).collect(Collectors.toList());
+
+        if (isNotEmpty(centralTokens)) {
+            int centroidLayoutTokenIndexStart = tokens.indexOf(centralTokens.get(0));
+            int centroidLayoutTokenIndexEnd = tokens.indexOf(centralTokens.get(centralTokens.size() - 1));
+
+            if (centroidLayoutTokenIndexStart > windowlayoutTokensSize) {
+                start = centroidLayoutTokenIndexStart - windowlayoutTokensSize;
+            }
+            if (end - centroidLayoutTokenIndexEnd > windowlayoutTokensSize) {
+                end = centroidLayoutTokenIndexEnd + windowlayoutTokensSize + 1;
+            }
+        }
+
+        return new ImmutablePair(start, end);
+    }
+
+    /**
+     * Return measurement extremities as the index of the layout token. It's useful if we want to combine
+     * measurement and layoutToken content.
+     */
+    public Pair<Integer, Integer> calculateQuantityExtremities(List<LayoutToken> tokens, Measurement measurement) {
+        Pair<Integer, Integer> extremities = null;
+        switch (measurement.getType()) {
+            case VALUE:
+                Quantity quantity = measurement.getQuantityAtomic();
+                List<LayoutToken> layoutTokens = quantity.getLayoutTokens();
+
+                extremities = getExtremitiesAsIndex(tokens, layoutTokens.get(0).getOffset(), layoutTokens.get(layoutTokens.size() - 1).getOffset());
+
+                break;
+            case INTERVAL_BASE_RANGE:
+                if (measurement.getQuantityBase() != null && measurement.getQuantityRange() != null) {
+                    Quantity quantityBase = measurement.getQuantityBase();
+                    Quantity quantityRange = measurement.getQuantityRange();
+
+                    extremities = getExtremitiesAsIndex(tokens, quantityBase.getLayoutTokens().get(0).getOffset(), quantityRange.getLayoutTokens().get(quantityRange.getLayoutTokens().size() - 1).getOffset());
+                } else {
+                    Quantity quantityTmp;
+                    if (measurement.getQuantityBase() == null) {
+                        quantityTmp = measurement.getQuantityRange();
+                    } else {
+                        quantityTmp = measurement.getQuantityBase();
+                    }
+
+                    extremities = getExtremitiesAsIndex(tokens, quantityTmp.getLayoutTokens().get(0).getOffset(), quantityTmp.getLayoutTokens().get(0).getOffset());
+                }
+
+                break;
+
+            case INTERVAL_MIN_MAX:
+                if (measurement.getQuantityLeast() != null && measurement.getQuantityMost() != null) {
+                    Quantity quantityLeast = measurement.getQuantityLeast();
+                    Quantity quantityMost = measurement.getQuantityMost();
+
+                    extremities = getExtremitiesAsIndex(tokens, quantityLeast.getLayoutTokens().get(0).getOffset(), quantityMost.getLayoutTokens().get(quantityMost.getLayoutTokens().size() - 1).getOffset());
+                } else {
+                    Quantity quantityTmp;
+                    if (measurement.getQuantityLeast() == null) {
+                        quantityTmp = measurement.getQuantityMost();
+                    } else {
+                        quantityTmp = measurement.getQuantityLeast();
+                    }
+
+                    extremities = getExtremitiesAsIndex(tokens, quantityTmp.getLayoutTokens().get(0).getOffset(), quantityTmp.getLayoutTokens().get(quantityTmp.getLayoutTokens().size() - 1).getOffset());
+                }
+                break;
+
+            case CONJUNCTION:
+                List<Quantity> quantityList = measurement.getQuantityList();
+                if (quantityList.size() > 1) {
+                    extremities = getExtremitiesAsIndex(tokens, quantityList.get(0).getLayoutTokens().get(0).getOffset(), quantityList.get(quantityList.size() - 1).getLayoutTokens().get(0).getOffset());
+                } else {
+                    extremities = getExtremitiesAsIndex(tokens, quantityList.get(0).getLayoutTokens().get(0).getOffset(), quantityList.get(0).getLayoutTokens().get(0).getOffset());
+                }
+
+                break;
+        }
+        return extremities;
+    }
+
+    /**
+     * Return the offset of the measurement - useful for matching into sentences or lexicons
+     */
+    public OffsetPosition calculateExtremitiesOffsets(Measurement measurement) {
+        List<OffsetPosition> offsets = new ArrayList<>();
+
+        switch (measurement.getType()) {
+            case VALUE:
+                CollectionUtils.addAll(offsets, QuantityOperations.getOffsets(measurement.getQuantityAtomic()));
+                break;
+            case INTERVAL_BASE_RANGE:
+                CollectionUtils.addAll(offsets, QuantityOperations.getOffsets(measurement.getQuantityBase()));
+                CollectionUtils.addAll(offsets, QuantityOperations.getOffsets(measurement.getQuantityRange()));
+
+                break;
+            case INTERVAL_MIN_MAX:
+                CollectionUtils.addAll(offsets, QuantityOperations.getOffsets(measurement.getQuantityLeast()));
+                CollectionUtils.addAll(offsets, QuantityOperations.getOffsets(measurement.getQuantityMost()));
+                break;
+
+            case CONJUNCTION:
+                CollectionUtils.addAll(offsets, QuantityOperations.getOffsets(measurement.getQuantityList()));
+
+                break;
+        }
+        return QuantityOperations.getContainingOffset(offsets);
     }
 
 }

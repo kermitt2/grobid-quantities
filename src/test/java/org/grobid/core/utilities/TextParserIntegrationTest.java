@@ -17,6 +17,7 @@ public class TextParserIntegrationTest {
         target = TextParser.getInstance();
     }
 
+    /** This test is specific to test a concurrency issue with clear NLP **/
     @Test
     public void testSafeThreadWhenParsingSentence_shouldWork() throws Exception {
 

@@ -1,9 +1,12 @@
 package org.grobid.core.engines;
 
 import com.google.common.collect.Iterables;
+import com.googlecode.clearnlp.tokenization.EnglishTokenizer;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Pair;
+import org.assertj.core.data.Offset;
 import org.grobid.core.GrobidModel;
 import org.grobid.core.analyzers.QuantityAnalyzer;
 import org.grobid.core.data.Measurement;
@@ -702,7 +705,7 @@ public class QuantityParser extends AbstractParser {
         if (currentMeasurement.isValid()) {
             measurements.add(currentMeasurement);
         }
-        
+
         measurements.stream().forEach(m -> {
             final Pair<OffsetPosition, String> measurementRawOffsetsAndText = QuantityOperations.getMeasurementRawOffsetsAndText(m, tokens);
             m.setRawOffsets(measurementRawOffsetsAndText.getLeft());

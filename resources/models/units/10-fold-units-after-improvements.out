@@ -1,0 +1,2506 @@
+10-fold training and evaluation on units model
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:42:34.612 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:42:34.620 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:42:34.620 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:34.620 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:42:34.620 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:34.620 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:42:34.620 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:42:34.624 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:42:34.627 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:42:34.630 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:42:34.630 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:42:34.631 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:42:34.631 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:42:34.633 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:42:34.633 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:42:34.633 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:42:34.633 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:42:34.633 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:42:34.961 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:42:34.962 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:42:35.445 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:42:35.445 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units4701857092989766468.train
+09:42:35.445 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units4799180607700453606.test
+09:42:35.446 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:42:35.446 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:42:35.459 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:42:35.473 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:42:35.476 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:42:35.482 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:42:35.491 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:42:35.495 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:42:35.499 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:42:35.502 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:42:35.509 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:42:35.510 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:42:35.511 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:42:35.512 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:42:35.513 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:42:35.514 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:42:35.517 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:42:35.518 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:42:35.520 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:42:35.521 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:42:35.522 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:42:35.523 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:42:35.524 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:42:35.524 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:42:35.525 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:42:35.526 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:42:35.528 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:42:35.529 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:42:35.530 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:42:35.532 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:42:35.534 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:42:35.536 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:42:35.537 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:42:35.542 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:42:35.545 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:42:35.546 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:42:35.547 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:42:35.548 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:42:35.551 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1209
+    nb labels:   7
+    nb blocks:   1520
+    nb features: 10640
+* Train the model with l-bfgs
+  [   1] obj=2394.20    act=5621     err=36.66%/57.15% time=0.01s/0.01s
+  [   2] obj=1827.84    act=5713     err=33.04%/26.88% time=0.00s/0.01s
+  [   3] obj=1566.57    act=5512     err=19.61%/14.72% time=0.01s/0.02s
+  [   4] obj=1233.04    act=5196     err=15.39%/12.32% time=0.01s/0.02s
+  [   5] obj=842.05     act=4649     err= 9.71%/12.32% time=0.01s/0.03s
+  [   6] obj=700.78     act=4589     err= 6.10%/ 6.78% time=0.01s/0.03s
+  [   7] obj=604.05     act=4501     err= 6.06%/ 6.78% time=0.01s/0.04s
+  [   8] obj=501.01     act=4244     err= 4.67%/ 5.21% time=0.01s/0.05s
+  [   9] obj=439.41     act=4056     err= 3.54%/ 4.22% time=0.01s/0.05s
+  [  10] obj=382.71     act=3801     err= 2.45%/ 2.89% time=0.01s/0.06s
+  [  11] obj=342.41     act=3607     err= 2.11%/ 3.06% time=0.01s/0.06s
+  [  12] obj=313.49     act=3530     err= 1.69%/ 2.40% time=0.01s/0.07s
+  [  13] obj=292.89     act=3413     err= 1.62%/ 2.48% time=0.01s/0.07s
+  [  14] obj=281.73     act=3065     err= 1.24%/ 1.90% time=0.01s/0.08s
+  [  15] obj=256.53     act=3111     err= 0.94%/ 1.49% time=0.01s/0.08s
+  [  16] obj=254.83     act=3116     err= 0.87%/ 1.32% time=0.01s/0.09s
+  [  17] obj=247.42     act=2869     err= 0.87%/ 1.24% time=0.01s/0.10s
+  [  18] obj=238.40     act=2531     err= 0.68%/ 0.91% time=0.01s/0.10s
+  [  19] obj=232.53     act=2254     err= 0.68%/ 0.91% time=0.01s/0.11s
+  [  20] obj=226.78     act=2187     err= 0.60%/ 0.74% time=0.01s/0.11s
+  [  21] obj=223.04     act=2107     err= 0.56%/ 0.66% time=0.01s/0.12s
+  [  22] obj=218.30     act=1940     err= 0.53%/ 0.58% time=0.01s/0.12s
+  [  23] obj=213.36     act=1755     err= 0.53%/ 0.58% time=0.01s/0.13s
+  [  24] obj=209.91     act=1677     err= 0.53%/ 0.58% time=0.01s/0.13s
+  [  25] obj=206.85     act=1591     err= 0.49%/ 0.50% time=0.01s/0.14s
+  [  26] obj=203.41     act=1491     err= 0.49%/ 0.50% time=0.01s/0.14s
+  [  27] obj=200.63     act=1386     err= 0.49%/ 0.58% time=0.01s/0.15s
+  [  28] obj=197.25     act=1272     err= 0.49%/ 0.50% time=0.01s/0.15s
+  [  29] obj=195.40     act=1216     err= 0.49%/ 0.50% time=0.01s/0.16s
+  [  30] obj=193.86     act=1130     err= 0.49%/ 0.50% time=0.01s/0.17s
+  [  31] obj=192.09     act=1123     err= 0.49%/ 0.50% time=0.01s/0.17s
+  [  32] obj=191.14     act=1102     err= 0.53%/ 0.58% time=0.01s/0.18s
+  [  33] obj=189.89     act=1072     err= 0.53%/ 0.58% time=0.01s/0.18s
+  [  34] obj=188.93     act=1023     err= 0.53%/ 0.58% time=0.01s/0.19s
+  [  35] obj=188.06     act=976      err= 0.53%/ 0.58% time=0.01s/0.19s
+  [  36] obj=187.31     act=941      err= 0.53%/ 0.58% time=0.01s/0.20s
+  [  37] obj=186.62     act=905      err= 0.53%/ 0.58% time=0.01s/0.20s
+  [  38] obj=185.91     act=850      err= 0.53%/ 0.58% time=0.01s/0.21s
+  [  39] obj=184.93     act=890      err= 0.49%/ 0.50% time=0.01s/0.21s
+  [  40] obj=184.22     act=850      err= 0.53%/ 0.58% time=0.01s/0.22s
+  [  41] obj=183.55     act=823      err= 0.49%/ 0.50% time=0.01s/0.23s
+  [  42] obj=183.32     act=782      err= 0.49%/ 0.50% time=0.01s/0.23s
+  [  43] obj=182.20     act=755      err= 0.49%/ 0.50% time=0.01s/0.24s
+  [  44] obj=181.87     act=752      err= 0.49%/ 0.50% time=0.01s/0.24s
+  [  45] obj=181.49     act=764      err= 0.49%/ 0.50% time=0.01s/0.25s
+  [  46] obj=180.93     act=749      err= 0.49%/ 0.50% time=0.01s/0.25s
+  [  47] obj=180.57     act=723      err= 0.49%/ 0.50% time=0.01s/0.26s
+  [  48] obj=180.22     act=698      err= 0.53%/ 0.58% time=0.01s/0.26s
+  [  49] obj=179.83     act=675      err= 0.49%/ 0.50% time=0.01s/0.27s
+  [  50] obj=179.54     act=635      err= 0.53%/ 0.58% time=0.01s/0.27s
+  [  51] obj=179.19     act=637      err= 0.45%/ 0.50% time=0.01s/0.28s
+  [  52] obj=178.96     act=650      err= 0.53%/ 0.58% time=0.01s/0.29s
+  [  53] obj=178.58     act=638      err= 0.45%/ 0.50% time=0.01s/0.30s
+  [  54] obj=178.33     act=641      err= 0.53%/ 0.58% time=0.01s/0.31s
+  [  55] obj=178.15     act=614      err= 0.45%/ 0.50% time=0.01s/0.32s
+  [  56] obj=177.64     act=622      err= 0.49%/ 0.50% time=0.01s/0.32s
+  [  57] obj=177.49     act=623      err= 0.49%/ 0.50% time=0.01s/0.33s
+  [  58] obj=177.29     act=632      err= 0.53%/ 0.58% time=0.01s/0.33s
+  [  59] obj=177.13     act=603      err= 0.45%/ 0.50% time=0.01s/0.34s
+  [  60] obj=176.83     act=621      err= 0.49%/ 0.50% time=0.01s/0.34s
+  [  61] obj=176.64     act=614      err= 0.45%/ 0.50% time=0.01s/0.35s
+  [  62] obj=176.59     act=616      err= 0.53%/ 0.58% time=0.01s/0.35s
+  [  63] obj=176.26     act=584      err= 0.45%/ 0.50% time=0.01s/0.36s
+  [  64] obj=176.15     act=584      err= 0.53%/ 0.58% time=0.01s/0.36s
+  [  65] obj=175.85     act=571      err= 0.49%/ 0.50% time=0.01s/0.37s
+  [  66] obj=175.77     act=554      err= 0.49%/ 0.50% time=0.01s/0.38s
+  [  67] obj=175.50     act=561      err= 0.49%/ 0.50% time=0.01s/0.38s
+  [  68] obj=175.45     act=558      err= 0.49%/ 0.50% time=0.01s/0.39s
+  [  69] obj=175.25     act=554      err= 0.49%/ 0.50% time=0.01s/0.39s
+  [  70] obj=175.13     act=559      err= 0.49%/ 0.50% time=0.01s/0.40s
+  [  71] obj=175.02     act=552      err= 0.49%/ 0.50% time=0.01s/0.40s
+  [  72] obj=174.88     act=561      err= 0.49%/ 0.50% time=0.01s/0.41s
+  [  73] obj=174.77     act=546      err= 0.49%/ 0.50% time=0.01s/0.41s
+  [  74] obj=174.60     act=567      err= 0.49%/ 0.50% time=0.01s/0.42s
+  [  75] obj=174.53     act=536      err= 0.45%/ 0.50% time=0.01s/0.42s
+  [  76] obj=174.37     act=526      err= 0.49%/ 0.50% time=0.01s/0.43s
+  [  77] obj=174.27     act=530      err= 0.45%/ 0.50% time=0.01s/0.43s
+  [  78] obj=174.15     act=515      err= 0.45%/ 0.50% time=0.01s/0.44s
+  [  79] obj=174.06     act=525      err= 0.45%/ 0.50% time=0.01s/0.45s
+  [  80] obj=173.90     act=512      err= 0.45%/ 0.50% time=0.01s/0.45s
+  [  81] obj=173.82     act=508      err= 0.45%/ 0.50% time=0.01s/0.46s
+  [  82] obj=173.73     act=520      err= 0.49%/ 0.50% time=0.01s/0.46s
+  [  83] obj=173.58     act=517      err= 0.45%/ 0.50% time=0.01s/0.47s
+  [  84] obj=173.49     act=508      err= 0.49%/ 0.50% time=0.01s/0.47s
+  [  85] obj=173.38     act=514      err= 0.45%/ 0.50% time=0.01s/0.48s
+  [  86] obj=173.29     act=509      err= 0.49%/ 0.50% time=0.01s/0.48s
+  [  87] obj=173.19     act=516      err= 0.49%/ 0.50% time=0.01s/0.49s
+  [  88] obj=173.11     act=512      err= 0.49%/ 0.50% time=0.01s/0.50s
+  [  89] obj=173.03     act=513      err= 0.49%/ 0.50% time=0.01s/0.50s
+  [  90] obj=172.94     act=509      err= 0.49%/ 0.50% time=0.01s/0.51s
+  [  91] obj=172.89     act=503      err= 0.49%/ 0.50% time=0.04s/0.54s
+  [  92] obj=172.84     act=503      err= 0.49%/ 0.50% time=0.04s/0.59s
+  [  93] obj=172.77     act=477      err= 0.49%/ 0.50% time=0.04s/0.63s
+  [  94] obj=172.71     act=458      err= 0.49%/ 0.50% time=0.04s/0.67s
+  [  95] obj=172.66     act=461      err= 0.49%/ 0.50% time=0.05s/0.71s
+  [  96] obj=172.61     act=468      err= 0.49%/ 0.50% time=0.04s/0.76s
+  [  97] obj=172.58     act=457      err= 0.49%/ 0.50% time=0.04s/0.79s
+  [  98] obj=172.54     act=463      err= 0.49%/ 0.50% time=0.05s/0.84s
+  [  99] obj=172.49     act=451      err= 0.45%/ 0.50% time=0.04s/0.88s
+  [ 100] obj=172.44     act=445      err= 0.49%/ 0.50% time=0.04s/0.92s
+  [ 101] obj=172.40     act=443      err= 0.45%/ 0.50% time=0.03s/0.95s
+  [ 102] obj=172.33     act=443      err= 0.49%/ 0.50% time=0.04s/0.99s
+  [ 103] obj=172.28     act=439      err= 0.49%/ 0.50% time=0.04s/1.03s
+  [ 104] obj=172.23     act=446      err= 0.49%/ 0.50% time=0.06s/1.09s
+  [ 105] obj=172.19     act=445      err= 0.45%/ 0.50% time=0.05s/1.14s
+  [ 106] obj=172.14     act=443      err= 0.49%/ 0.50% time=0.03s/1.17s
+  [ 107] obj=172.11     act=434      err= 0.45%/ 0.50% time=0.02s/1.18s
+  [ 108] obj=172.04     act=433      err= 0.45%/ 0.50% time=0.01s/1.20s
+  [ 109] obj=172.03     act=406      err= 0.49%/ 0.50% time=0.01s/1.20s
+  [ 110] obj=171.93     act=417      err= 0.49%/ 0.50% time=0.01s/1.21s
+  [ 111] obj=171.91     act=413      err= 0.49%/ 0.50% time=0.01s/1.22s
+  [ 112] obj=171.83     act=432      err= 0.49%/ 0.50% time=0.01s/1.23s
+  [ 113] obj=171.80     act=431      err= 0.49%/ 0.50% time=0.01s/1.24s
+  [ 114] obj=171.78     act=407      err= 0.49%/ 0.50% time=0.01s/1.24s
+  [ 115] obj=171.73     act=416      err= 0.45%/ 0.50% time=0.01s/1.25s
+  [ 116] obj=171.67     act=396      err= 0.49%/ 0.50% time=0.01s/1.26s
+  [ 117] obj=171.65     act=399      err= 0.45%/ 0.50% time=0.01s/1.26s
+  [ 118] obj=171.59     act=397      err= 0.49%/ 0.50% time=0.01s/1.27s
+  [ 119] obj=171.58     act=414      err= 0.45%/ 0.50% time=0.01s/1.28s
+  [ 120] obj=171.51     act=395      err= 0.49%/ 0.50% time=0.01s/1.28s
+  [ 121] obj=171.51     act=400      err= 0.45%/ 0.50% time=0.01s/1.29s
+  [ 122] obj=171.44     act=385      err= 0.49%/ 0.50% time=0.01s/1.30s
+  [ 123] obj=171.42     act=385      err= 0.45%/ 0.50% time=0.01s/1.30s
+  [ 124] obj=171.36     act=365      err= 0.49%/ 0.50% time=0.01s/1.31s
+  [ 125] obj=171.32     act=377      err= 0.45%/ 0.50% time=0.01s/1.32s
+  [ 126] obj=171.30     act=360      err= 0.49%/ 0.50% time=0.01s/1.32s
+  [ 127] obj=171.24     act=378      err= 0.45%/ 0.50% time=0.01s/1.33s
+  [ 128] obj=171.22     act=379      err= 0.49%/ 0.50% time=0.01s/1.33s
+  [ 129] obj=171.16     act=380      err= 0.45%/ 0.50% time=0.01s/1.34s
+  [ 130] obj=171.11     act=385      err= 0.49%/ 0.50% time=0.01s/1.35s
+  [ 131] obj=171.08     act=383      err= 0.45%/ 0.50% time=0.01s/1.35s
+  [ 132] obj=171.06     act=400      err= 0.49%/ 0.50% time=0.01s/1.36s
+  [ 133] obj=171.03     act=409      err= 0.45%/ 0.50% time=0.01s/1.37s
+  [ 134] obj=170.99     act=410      err= 0.49%/ 0.50% time=0.01s/1.37s
+  [ 135] obj=170.95     act=406      err= 0.45%/ 0.50% time=0.01s/1.38s
+  [ 136] obj=170.90     act=411      err= 0.49%/ 0.50% time=0.01s/1.39s
+  [ 137] obj=170.87     act=409      err= 0.49%/ 0.50% time=0.01s/1.39s
+  [ 138] obj=170.84     act=413      err= 0.49%/ 0.50% time=0.01s/1.40s
+  [ 139] obj=170.81     act=409      err= 0.45%/ 0.50% time=0.01s/1.40s
+  [ 140] obj=170.79     act=405      err= 0.49%/ 0.50% time=0.01s/1.41s
+  [ 141] obj=170.73     act=404      err= 0.49%/ 0.50% time=0.01s/1.42s
+  [ 142] obj=170.71     act=384      err= 0.49%/ 0.50% time=0.01s/1.42s
+  [ 143] obj=170.70     act=367      err= 0.45%/ 0.50% time=0.01s/1.43s
+  [ 144] obj=170.67     act=394      err= 0.49%/ 0.58% time=0.01s/1.43s
+  [ 145] obj=170.60     act=365      err= 0.45%/ 0.50% time=0.01s/1.44s
+  [ 146] obj=170.60     act=356      err= 0.49%/ 0.58% time=0.01s/1.44s
+  [ 147] obj=170.53     act=352      err= 0.45%/ 0.50% time=0.01s/1.45s
+  [ 148] obj=170.51     act=351      err= 0.45%/ 0.50% time=0.01s/1.45s
+  [ 149] obj=170.49     act=344      err= 0.45%/ 0.50% time=0.01s/1.46s
+  [ 150] obj=170.47     act=372      err= 0.45%/ 0.50% time=0.01s/1.46s
+  [ 151] obj=170.41     act=383      err= 0.45%/ 0.50% time=0.01s/1.47s
+  [ 152] obj=170.39     act=370      err= 0.45%/ 0.50% time=0.01s/1.48s
+  [ 153] obj=170.33     act=381      err= 0.45%/ 0.50% time=0.01s/1.48s
+  [ 154] obj=170.31     act=364      err= 0.45%/ 0.50% time=0.01s/1.49s
+  [ 155] obj=170.30     act=379      err= 0.49%/ 0.50% time=0.02s/1.51s
+  [ 156] obj=170.27     act=365      err= 0.49%/ 0.50% time=0.04s/1.55s
+  [ 157] obj=170.25     act=364      err= 0.49%/ 0.50% time=0.04s/1.59s
+  [ 158] obj=170.22     act=361      err= 0.49%/ 0.50% time=0.03s/1.62s
+  [ 159] obj=170.18     act=380      err= 0.49%/ 0.50% time=0.01s/1.63s
+  [ 160] obj=170.17     act=355      err= 0.49%/ 0.50% time=0.01s/1.64s
+  [ 161] obj=170.14     act=376      err= 0.49%/ 0.50% time=0.01s/1.64s
+  [ 162] obj=170.13     act=361      err= 0.49%/ 0.50% time=0.01s/1.65s
+  [ 163] obj=170.08     act=348      err= 0.49%/ 0.50% time=0.01s/1.66s
+  [ 164] obj=170.06     act=345      err= 0.49%/ 0.50% time=0.01s/1.66s
+  [ 165] obj=170.02     act=367      err= 0.49%/ 0.50% time=0.01s/1.67s
+  [ 166] obj=169.99     act=340      err= 0.49%/ 0.50% time=0.01s/1.68s
+  [ 167] obj=169.98     act=350      err= 0.49%/ 0.50% time=0.01s/1.68s
+  [ 168] obj=169.93     act=362      err= 0.49%/ 0.50% time=0.01s/1.69s
+  [ 169] obj=169.90     act=366      err= 0.49%/ 0.50% time=0.01s/1.70s
+  [ 170] obj=169.88     act=347      err= 0.49%/ 0.50% time=0.01s/1.72s
+  [ 171] obj=169.86     act=344      err= 0.49%/ 0.50% time=0.01s/1.73s
+  [ 172] obj=169.85     act=336      err= 0.49%/ 0.50% time=0.01s/1.74s
+  [ 173] obj=169.83     act=344      err= 0.49%/ 0.50% time=0.01s/1.75s
+  [ 174] obj=169.82     act=336      err= 0.49%/ 0.50% time=0.01s/1.76s
+* Save the model
+* Done
+09:42:37.344 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 28660)
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 16 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.91        100          99.89        99.95  
+<pow>                100          100          100          100    
+<prefix>             99.91        99.24        100          99.62  
+
+all fields           99.94        99.91        99.91        99.91   (micro average)
+                     99.94        99.75        99.96        99.85   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               98.95        99.23        99.42        99.33  
+<pow>                100          100          100          100    
+<prefix>             99.85        99.24        100          99.62  
+
+all fields           99.6         99.25        99.55        99.4    (micro average)
+                     99.6         99.49        99.81        99.65   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   507
+Correct instances:          506
+Instance-level recall:      99.8
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 1928 ms
+
+BUILD SUCCESSFUL in 8s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:42:39.105 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:42:39.111 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:42:39.111 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:39.111 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:42:39.111 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:39.111 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:42:39.111 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:42:39.114 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:42:39.117 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:42:39.119 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:42:39.119 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:42:39.120 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:42:39.120 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:42:39.121 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:42:39.121 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:42:39.121 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:42:39.121 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:42:39.121 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:42:39.426 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:42:39.426 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:42:39.831 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:42:39.831 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units7301043532556216613.train
+09:42:39.831 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units8838116110021633629.test
+09:42:39.831 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:42:39.832 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:42:39.841 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:42:39.852 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:42:39.855 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:42:39.860 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:42:39.868 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:42:39.872 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:42:39.875 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:42:39.878 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:42:39.888 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:42:39.890 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:42:39.893 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:42:39.895 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:42:39.897 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:42:39.899 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:42:39.904 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:42:39.904 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:42:39.910 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:42:39.912 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:42:39.913 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:42:39.914 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:42:39.915 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:42:39.916 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:42:39.917 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:42:39.918 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:42:39.919 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:42:39.920 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:42:39.922 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:42:39.923 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:42:39.925 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:42:39.926 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:42:39.927 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:42:39.931 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:42:39.934 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:42:39.935 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:42:39.936 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:42:39.936 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:42:39.938 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1272
+    nb labels:   7
+    nb blocks:   1627
+    nb features: 11389
+* Train the model with l-bfgs
+  [   1] obj=2370.25    act=5747     err=37.64%/56.68% time=0.01s/0.01s
+  [   2] obj=1813.07    act=5875     err=31.53%/25.71% time=0.00s/0.01s
+  [   3] obj=1577.78    act=5771     err=18.55%/15.96% time=0.01s/0.02s
+  [   4] obj=1308.85    act=5459     err=15.18%/10.53% time=0.01s/0.02s
+  [   5] obj=945.42     act=4791     err=11.06%/11.95% time=0.01s/0.03s
+  [   6] obj=715.46     act=4665     err= 8.32%/ 8.41% time=0.01s/0.04s
+  [   7] obj=584.78     act=4570     err= 5.06%/ 5.11% time=0.01s/0.04s
+  [   8] obj=481.48     act=4276     err= 3.94%/ 4.48% time=0.01s/0.05s
+  [   9] obj=426.46     act=4268     err= 3.18%/ 3.69% time=0.01s/0.05s
+  [  10] obj=378.36     act=4064     err= 2.42%/ 3.14% time=0.01s/0.06s
+  [  11] obj=337.52     act=3924     err= 2.13%/ 2.91% time=0.01s/0.06s
+  [  12] obj=303.79     act=3735     err= 1.52%/ 2.59% time=0.01s/0.07s
+  [  13] obj=275.24     act=3469     err= 1.27%/ 2.04% time=0.01s/0.08s
+  [  14] obj=259.04     act=3284     err= 1.05%/ 1.81% time=0.01s/0.08s
+  [  15] obj=248.31     act=3156     err= 1.01%/ 1.73% time=0.01s/0.09s
+  [  16] obj=241.13     act=3045     err= 0.94%/ 1.57% time=0.01s/0.09s
+  [  17] obj=233.58     act=2878     err= 0.83%/ 1.26% time=0.01s/0.10s
+  [  18] obj=226.70     act=2755     err= 0.72%/ 1.10% time=0.01s/0.10s
+  [  19] obj=220.14     act=2591     err= 0.61%/ 0.94% time=0.01s/0.11s
+  [  20] obj=214.02     act=2411     err= 0.51%/ 0.71% time=0.01s/0.11s
+  [  21] obj=206.90     act=2165     err= 0.40%/ 0.47% time=0.01s/0.12s
+  [  22] obj=197.71     act=1818     err= 0.40%/ 0.55% time=0.01s/0.13s
+  [  23] obj=192.52     act=1684     err= 0.36%/ 0.47% time=0.01s/0.13s
+  [  24] obj=187.78     act=1508     err= 0.33%/ 0.39% time=0.01s/0.14s
+  [  25] obj=184.62     act=1357     err= 0.33%/ 0.39% time=0.01s/0.14s
+  [  26] obj=182.52     act=1308     err= 0.33%/ 0.39% time=0.01s/0.15s
+  [  27] obj=181.20     act=1275     err= 0.33%/ 0.39% time=0.01s/0.15s
+  [  28] obj=179.58     act=1186     err= 0.25%/ 0.24% time=0.01s/0.16s
+  [  29] obj=178.08     act=1066     err= 0.29%/ 0.31% time=0.01s/0.16s
+  [  30] obj=176.71     act=1065     err= 0.29%/ 0.31% time=0.01s/0.17s
+  [  31] obj=176.11     act=1041     err= 0.36%/ 0.47% time=0.01s/0.18s
+  [  32] obj=174.55     act=915      err= 0.33%/ 0.39% time=0.01s/0.18s
+  [  33] obj=173.50     act=909      err= 0.29%/ 0.39% time=0.01s/0.19s
+  [  34] obj=172.79     act=882      err= 0.33%/ 0.39% time=0.01s/0.19s
+  [  35] obj=172.19     act=861      err= 0.29%/ 0.31% time=0.01s/0.20s
+  [  36] obj=171.66     act=853      err= 0.29%/ 0.31% time=0.01s/0.20s
+  [  37] obj=171.09     act=827      err= 0.25%/ 0.24% time=0.01s/0.21s
+  [  38] obj=170.66     act=810      err= 0.29%/ 0.31% time=0.01s/0.21s
+  [  39] obj=170.03     act=800      err= 0.25%/ 0.24% time=0.01s/0.22s
+  [  40] obj=169.67     act=773      err= 0.29%/ 0.31% time=0.01s/0.23s
+  [  41] obj=169.12     act=774      err= 0.29%/ 0.31% time=0.01s/0.23s
+  [  42] obj=168.79     act=750      err= 0.33%/ 0.39% time=0.01s/0.24s
+  [  43] obj=168.36     act=734      err= 0.33%/ 0.31% time=0.01s/0.24s
+  [  44] obj=167.91     act=725      err= 0.33%/ 0.39% time=0.01s/0.25s
+  [  45] obj=167.60     act=700      err= 0.33%/ 0.31% time=0.01s/0.25s
+  [  46] obj=167.22     act=693      err= 0.33%/ 0.39% time=0.01s/0.26s
+  [  47] obj=166.86     act=678      err= 0.25%/ 0.24% time=0.01s/0.26s
+  [  48] obj=166.47     act=682      err= 0.36%/ 0.47% time=0.01s/0.27s
+  [  49] obj=166.30     act=663      err= 0.25%/ 0.24% time=0.01s/0.28s
+  [  50] obj=165.84     act=651      err= 0.33%/ 0.39% time=0.01s/0.28s
+  [  51] obj=165.68     act=653      err= 0.29%/ 0.31% time=0.01s/0.29s
+  [  52] obj=165.32     act=664      err= 0.33%/ 0.39% time=0.01s/0.29s
+  [  53] obj=165.10     act=648      err= 0.29%/ 0.31% time=0.01s/0.30s
+  [  54] obj=164.88     act=650      err= 0.33%/ 0.39% time=0.01s/0.30s
+  [  55] obj=164.55     act=654      err= 0.29%/ 0.31% time=0.01s/0.31s
+  [  56] obj=164.30     act=621      err= 0.36%/ 0.47% time=0.01s/0.31s
+  [  57] obj=163.98     act=613      err= 0.29%/ 0.31% time=0.01s/0.32s
+  [  58] obj=163.72     act=603      err= 0.36%/ 0.47% time=0.01s/0.33s
+  [  59] obj=163.55     act=594      err= 0.29%/ 0.31% time=0.01s/0.33s
+  [  60] obj=163.38     act=602      err= 0.36%/ 0.47% time=0.01s/0.34s
+  [  61] obj=163.18     act=583      err= 0.29%/ 0.31% time=0.01s/0.34s
+  [  62] obj=162.96     act=604      err= 0.33%/ 0.39% time=0.01s/0.35s
+  [  63] obj=162.85     act=563      err= 0.29%/ 0.31% time=0.01s/0.35s
+  [  64] obj=162.68     act=570      err= 0.29%/ 0.31% time=0.01s/0.36s
+  [  65] obj=162.57     act=548      err= 0.29%/ 0.31% time=0.01s/0.36s
+  [  66] obj=162.45     act=549      err= 0.25%/ 0.24% time=0.01s/0.37s
+  [  67] obj=162.39     act=535      err= 0.29%/ 0.31% time=0.01s/0.38s
+  [  68] obj=162.28     act=553      err= 0.29%/ 0.31% time=0.01s/0.38s
+  [  69] obj=162.08     act=539      err= 0.25%/ 0.24% time=0.01s/0.39s
+  [  70] obj=161.98     act=529      err= 0.25%/ 0.24% time=0.02s/0.40s
+  [  71] obj=161.83     act=525      err= 0.25%/ 0.24% time=0.02s/0.43s
+  [  72] obj=161.73     act=508      err= 0.25%/ 0.24% time=0.02s/0.45s
+  [  73] obj=161.65     act=505      err= 0.25%/ 0.24% time=0.05s/0.49s
+  [  74] obj=161.54     act=503      err= 0.25%/ 0.24% time=0.04s/0.54s
+  [  75] obj=161.40     act=499      err= 0.25%/ 0.24% time=0.03s/0.57s
+  [  76] obj=161.34     act=506      err= 0.29%/ 0.31% time=0.03s/0.60s
+  [  77] obj=161.17     act=490      err= 0.25%/ 0.24% time=0.03s/0.64s
+  [  78] obj=161.08     act=489      err= 0.25%/ 0.24% time=0.04s/0.68s
+  [  79] obj=161.07     act=468      err= 0.25%/ 0.24% time=0.04s/0.72s
+  [  80] obj=160.88     act=478      err= 0.25%/ 0.24% time=0.03s/0.75s
+  [  81] obj=160.76     act=465      err= 0.25%/ 0.24% time=0.04s/0.79s
+  [  82] obj=160.72     act=469      err= 0.25%/ 0.24% time=0.03s/0.82s
+  [  83] obj=160.60     act=463      err= 0.25%/ 0.24% time=0.04s/0.87s
+  [  84] obj=160.53     act=465      err= 0.25%/ 0.24% time=0.04s/0.91s
+  [  85] obj=160.51     act=462      err= 0.25%/ 0.24% time=0.04s/0.95s
+  [  86] obj=160.42     act=467      err= 0.25%/ 0.24% time=0.05s/1.00s
+  [  87] obj=160.36     act=456      err= 0.25%/ 0.24% time=0.03s/1.02s
+  [  88] obj=160.21     act=443      err= 0.25%/ 0.24% time=0.01s/1.04s
+  [  89] obj=160.17     act=442      err= 0.25%/ 0.24% time=0.02s/1.05s
+  [  90] obj=160.07     act=437      err= 0.25%/ 0.24% time=0.01s/1.07s
+  [  91] obj=160.03     act=436      err= 0.25%/ 0.24% time=0.01s/1.08s
+  [  92] obj=159.99     act=436      err= 0.25%/ 0.24% time=0.01s/1.08s
+  [  93] obj=159.91     act=432      err= 0.25%/ 0.24% time=0.01s/1.09s
+  [  94] obj=159.87     act=430      err= 0.29%/ 0.31% time=0.01s/1.10s
+  [  95] obj=159.79     act=430      err= 0.25%/ 0.24% time=0.01s/1.10s
+  [  96] obj=159.76     act=427      err= 0.29%/ 0.31% time=0.01s/1.11s
+  [  97] obj=159.68     act=423      err= 0.25%/ 0.24% time=0.01s/1.12s
+  [  98] obj=159.65     act=405      err= 0.29%/ 0.31% time=0.01s/1.13s
+  [  99] obj=159.58     act=401      err= 0.25%/ 0.24% time=0.01s/1.13s
+  [ 100] obj=159.53     act=402      err= 0.29%/ 0.31% time=0.01s/1.14s
+  [ 101] obj=159.47     act=399      err= 0.25%/ 0.24% time=0.01s/1.15s
+  [ 102] obj=159.43     act=401      err= 0.29%/ 0.31% time=0.01s/1.15s
+  [ 103] obj=159.38     act=395      err= 0.25%/ 0.24% time=0.01s/1.16s
+  [ 104] obj=159.35     act=405      err= 0.29%/ 0.31% time=0.01s/1.17s
+  [ 105] obj=159.30     act=394      err= 0.25%/ 0.24% time=0.01s/1.17s
+  [ 106] obj=159.27     act=400      err= 0.29%/ 0.31% time=0.01s/1.18s
+  [ 107] obj=159.24     act=390      err= 0.25%/ 0.24% time=0.01s/1.19s
+  [ 108] obj=159.18     act=399      err= 0.29%/ 0.31% time=0.01s/1.19s
+  [ 109] obj=159.14     act=389      err= 0.25%/ 0.24% time=0.01s/1.20s
+  [ 110] obj=159.11     act=393      err= 0.29%/ 0.31% time=0.01s/1.21s
+  [ 111] obj=159.05     act=391      err= 0.25%/ 0.24% time=0.01s/1.21s
+  [ 112] obj=159.03     act=389      err= 0.29%/ 0.31% time=0.01s/1.22s
+  [ 113] obj=158.94     act=375      err= 0.25%/ 0.24% time=0.01s/1.23s
+  [ 114] obj=158.92     act=373      err= 0.29%/ 0.31% time=0.01s/1.23s
+  [ 115] obj=158.85     act=373      err= 0.29%/ 0.31% time=0.01s/1.24s
+  [ 116] obj=158.79     act=370      err= 0.29%/ 0.31% time=0.01s/1.25s
+  [ 117] obj=158.61     act=369      err= 0.29%/ 0.31% time=0.01s/1.25s
+  [ 118] obj=158.54     act=403      err= 0.33%/ 0.39% time=0.01s/1.27s
+  [ 119] obj=158.49     act=426      err= 0.29%/ 0.31% time=0.01s/1.28s
+  [ 120] obj=158.45     act=421      err= 0.29%/ 0.31% time=0.01s/1.29s
+  [ 121] obj=158.42     act=404      err= 0.29%/ 0.31% time=0.01s/1.31s
+  [ 122] obj=158.37     act=392      err= 0.29%/ 0.31% time=0.01s/1.32s
+  [ 123] obj=158.32     act=405      err= 0.29%/ 0.31% time=0.01s/1.33s
+  [ 124] obj=158.27     act=378      err= 0.29%/ 0.31% time=0.01s/1.34s
+  [ 125] obj=158.24     act=393      err= 0.29%/ 0.31% time=0.01s/1.35s
+  [ 126] obj=158.23     act=371      err= 0.33%/ 0.39% time=0.01s/1.35s
+  [ 127] obj=158.16     act=389      err= 0.29%/ 0.31% time=0.01s/1.36s
+  [ 128] obj=158.07     act=379      err= 0.33%/ 0.39% time=0.01s/1.36s
+  [ 129] obj=158.03     act=383      err= 0.29%/ 0.31% time=0.01s/1.37s
+  [ 130] obj=157.96     act=366      err= 0.33%/ 0.39% time=0.01s/1.37s
+  [ 131] obj=157.91     act=380      err= 0.29%/ 0.31% time=0.01s/1.38s
+  [ 132] obj=157.87     act=366      err= 0.33%/ 0.39% time=0.01s/1.39s
+  [ 133] obj=157.83     act=385      err= 0.29%/ 0.31% time=0.01s/1.39s
+  [ 134] obj=157.76     act=369      err= 0.29%/ 0.31% time=0.01s/1.40s
+  [ 135] obj=157.73     act=378      err= 0.29%/ 0.31% time=0.01s/1.40s
+  [ 136] obj=157.64     act=354      err= 0.29%/ 0.31% time=0.01s/1.41s
+  [ 137] obj=157.60     act=351      err= 0.29%/ 0.31% time=0.03s/1.44s
+  [ 138] obj=157.51     act=350      err= 0.29%/ 0.31% time=0.04s/1.48s
+  [ 139] obj=157.47     act=353      err= 0.29%/ 0.31% time=0.04s/1.52s
+  [ 140] obj=157.38     act=348      err= 0.29%/ 0.31% time=0.02s/1.54s
+  [ 141] obj=157.32     act=336      err= 0.25%/ 0.24% time=0.01s/1.55s
+  [ 142] obj=157.30     act=336      err= 0.29%/ 0.31% time=0.01s/1.56s
+  [ 143] obj=157.24     act=342      err= 0.25%/ 0.24% time=0.01s/1.56s
+  [ 144] obj=157.20     act=337      err= 0.25%/ 0.24% time=0.01s/1.57s
+  [ 145] obj=157.17     act=367      err= 0.25%/ 0.24% time=0.01s/1.58s
+  [ 146] obj=157.13     act=357      err= 0.25%/ 0.24% time=0.01s/1.59s
+  [ 147] obj=157.10     act=367      err= 0.25%/ 0.24% time=0.01s/1.60s
+  [ 148] obj=157.08     act=359      err= 0.25%/ 0.24% time=0.01s/1.61s
+  [ 149] obj=157.03     act=364      err= 0.25%/ 0.24% time=0.01s/1.62s
+  [ 150] obj=157.01     act=353      err= 0.25%/ 0.24% time=0.01s/1.63s
+  [ 151] obj=156.98     act=362      err= 0.25%/ 0.24% time=0.01s/1.64s
+  [ 152] obj=156.95     act=351      err= 0.25%/ 0.24% time=0.01s/1.65s
+  [ 153] obj=156.93     act=369      err= 0.25%/ 0.24% time=0.01s/1.65s
+  [ 154] obj=156.90     act=351      err= 0.25%/ 0.24% time=0.01s/1.66s
+  [ 155] obj=156.87     act=352      err= 0.25%/ 0.24% time=0.01s/1.67s
+  [ 156] obj=156.85     act=350      err= 0.25%/ 0.24% time=0.01s/1.68s
+  [ 157] obj=156.83     act=350      err= 0.25%/ 0.24% time=0.01s/1.69s
+  [ 158] obj=156.81     act=349      err= 0.25%/ 0.24% time=0.01s/1.70s
+  [ 159] obj=156.80     act=350      err= 0.25%/ 0.24% time=0.01s/1.71s
+  [ 160] obj=156.77     act=331      err= 0.25%/ 0.24% time=0.01s/1.72s
+  [ 161] obj=156.75     act=331      err= 0.25%/ 0.24% time=0.01s/1.73s
+  [ 162] obj=156.72     act=330      err= 0.25%/ 0.24% time=0.01s/1.74s
+* Save the model
+* Done
+09:42:41.713 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 29903)
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 15 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.4         100          99.27        99.63  
+<pow>                100          100          100          100    
+<prefix>             99.4         94.59        100          97.22  
+
+all fields           99.6         99.39        99.39        99.39   (micro average)
+                     99.6         98.2         99.76        98.95   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               98.71        99.58        98.74        99.15  
+<pow>                100          100          100          100    
+<prefix>             99.03        94.59        100          97.22  
+
+all fields           99.25        98.69        99.02        98.86   (micro average)
+                     99.25        98.06        99.58        98.79   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   444
+Correct instances:          438
+Instance-level recall:      98.65
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 1913 ms
+
+BUILD SUCCESSFUL in 3s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:42:42.814 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:42:42.833 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:42:42.833 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:42.833 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:42:42.833 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:42.833 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:42:42.833 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:42:42.839 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:42:42.842 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:42:42.848 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:42:42.859 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:42:42.860 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:42:42.860 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:42:42.861 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:42:42.862 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:42:42.862 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:42:42.862 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:42:42.862 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:42:43.430 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:42:43.430 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:42:44.038 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:42:44.038 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units607082979176681107.train
+09:42:44.039 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units6732590797306571136.test
+09:42:44.039 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:42:44.039 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:42:44.054 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:42:44.069 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:42:44.074 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:42:44.083 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:42:44.097 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:42:44.103 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:42:44.107 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:42:44.112 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:42:44.123 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:42:44.125 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:42:44.127 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:42:44.129 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:42:44.130 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:42:44.133 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:42:44.137 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:42:44.139 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:42:44.143 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:42:44.144 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:42:44.145 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:42:44.146 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:42:44.147 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:42:44.148 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:42:44.150 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:42:44.151 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:42:44.154 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:42:44.156 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:42:44.158 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:42:44.161 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:42:44.164 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:42:44.167 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:42:44.168 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:42:44.175 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:42:44.180 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:42:44.182 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:42:44.183 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:42:44.184 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:42:44.188 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1342
+    nb labels:   7
+    nb blocks:   1565
+    nb features: 10955
+* Train the model with l-bfgs
+  [   1] obj=2562.80    act=5687     err=31.56%/44.63% time=0.01s/0.01s
+  [   2] obj=2002.83    act=5795     err=31.40%/26.23% time=0.01s/0.02s
+  [   3] obj=1676.65    act=5536     err=17.96%/14.01% time=0.01s/0.03s
+  [   4] obj=1282.90    act=5173     err=14.91%/11.48% time=0.01s/0.03s
+  [   5] obj=843.92     act=4745     err= 7.85%/10.51% time=0.01s/0.04s
+  [   6] obj=644.68     act=4521     err= 5.25%/ 5.59% time=0.01s/0.05s
+  [   7] obj=550.95     act=4465     err= 4.66%/ 5.44% time=0.01s/0.06s
+  [   8] obj=481.73     act=4261     err= 3.84%/ 4.17% time=0.01s/0.06s
+  [   9] obj=417.72     act=4029     err= 2.76%/ 3.50% time=0.01s/0.07s
+  [  10] obj=366.02     act=3797     err= 2.17%/ 3.06% time=0.01s/0.08s
+  [  11] obj=330.22     act=3436     err= 1.38%/ 2.24% time=0.01s/0.09s
+  [  12] obj=299.60     act=3406     err= 1.35%/ 2.16% time=0.01s/0.09s
+  [  13] obj=287.06     act=3329     err= 1.18%/ 2.09% time=0.01s/0.10s
+  [  14] obj=283.23     act=3151     err= 1.08%/ 1.71% time=0.01s/0.11s
+  [  15] obj=263.91     act=3151     err= 1.08%/ 1.79% time=0.01s/0.11s
+  [  16] obj=259.51     act=3121     err= 0.92%/ 1.49% time=0.01s/0.12s
+  [  17] obj=246.21     act=2806     err= 0.72%/ 1.04% time=0.01s/0.13s
+  [  18] obj=244.32     act=2565     err= 0.82%/ 1.34% time=0.01s/0.14s
+  [  19] obj=234.60     act=2501     err= 0.62%/ 0.82% time=0.01s/0.15s
+  [  20] obj=230.40     act=2356     err= 0.53%/ 0.67% time=0.01s/0.15s
+  [  21] obj=223.35     act=2170     err= 0.46%/ 0.52% time=0.01s/0.16s
+  [  22] obj=218.77     act=1889     err= 0.49%/ 0.67% time=0.01s/0.17s
+  [  23] obj=212.51     act=1808     err= 0.49%/ 0.60% time=0.01s/0.17s
+  [  24] obj=209.13     act=1709     err= 0.43%/ 0.45% time=0.01s/0.18s
+  [  25] obj=206.85     act=1473     err= 0.49%/ 0.60% time=0.01s/0.19s
+  [  26] obj=202.49     act=1443     err= 0.43%/ 0.45% time=0.01s/0.20s
+  [  27] obj=201.55     act=1398     err= 0.43%/ 0.45% time=0.01s/0.20s
+  [  28] obj=199.33     act=1272     err= 0.43%/ 0.45% time=0.01s/0.21s
+  [  29] obj=198.58     act=1125     err= 0.46%/ 0.60% time=0.01s/0.22s
+  [  30] obj=195.89     act=1125     err= 0.46%/ 0.52% time=0.01s/0.22s
+  [  31] obj=195.10     act=1089     err= 0.43%/ 0.45% time=0.01s/0.23s
+  [  32] obj=194.27     act=1064     err= 0.46%/ 0.52% time=0.01s/0.24s
+  [  33] obj=193.41     act=1015     err= 0.43%/ 0.52% time=0.01s/0.25s
+  [  34] obj=192.28     act=979      err= 0.46%/ 0.52% time=0.01s/0.25s
+  [  35] obj=191.49     act=952      err= 0.46%/ 0.52% time=0.01s/0.26s
+  [  36] obj=190.65     act=926      err= 0.46%/ 0.52% time=0.01s/0.27s
+  [  37] obj=189.99     act=897      err= 0.46%/ 0.52% time=0.01s/0.28s
+  [  38] obj=189.17     act=907      err= 0.43%/ 0.45% time=0.01s/0.28s
+  [  39] obj=188.51     act=872      err= 0.43%/ 0.45% time=0.01s/0.29s
+  [  40] obj=188.02     act=860      err= 0.43%/ 0.45% time=0.01s/0.30s
+  [  41] obj=187.39     act=845      err= 0.39%/ 0.45% time=0.01s/0.31s
+  [  42] obj=186.87     act=846      err= 0.39%/ 0.45% time=0.01s/0.32s
+  [  43] obj=186.43     act=811      err= 0.39%/ 0.45% time=0.01s/0.32s
+  [  44] obj=185.75     act=813      err= 0.39%/ 0.45% time=0.01s/0.33s
+  [  45] obj=185.42     act=802      err= 0.39%/ 0.45% time=0.01s/0.34s
+  [  46] obj=184.77     act=771      err= 0.43%/ 0.45% time=0.01s/0.35s
+  [  47] obj=184.54     act=761      err= 0.43%/ 0.45% time=0.01s/0.35s
+  [  48] obj=183.97     act=756      err= 0.46%/ 0.52% time=0.01s/0.36s
+  [  49] obj=183.70     act=749      err= 0.43%/ 0.45% time=0.01s/0.37s
+  [  50] obj=183.53     act=716      err= 0.46%/ 0.52% time=0.01s/0.37s
+  [  51] obj=183.03     act=719      err= 0.43%/ 0.45% time=0.01s/0.38s
+  [  52] obj=182.84     act=710      err= 0.46%/ 0.52% time=0.01s/0.39s
+  [  53] obj=182.54     act=704      err= 0.43%/ 0.45% time=0.01s/0.40s
+  [  54] obj=182.35     act=678      err= 0.46%/ 0.52% time=0.01s/0.40s
+  [  55] obj=182.06     act=665      err= 0.43%/ 0.45% time=0.01s/0.41s
+  [  56] obj=181.92     act=659      err= 0.46%/ 0.52% time=0.01s/0.42s
+  [  57] obj=181.59     act=645      err= 0.46%/ 0.52% time=0.01s/0.43s
+  [  58] obj=181.44     act=628      err= 0.46%/ 0.52% time=0.01s/0.43s
+  [  59] obj=181.28     act=613      err= 0.46%/ 0.52% time=0.01s/0.44s
+  [  60] obj=181.12     act=609      err= 0.46%/ 0.52% time=0.01s/0.45s
+  [  61] obj=180.95     act=602      err= 0.43%/ 0.45% time=0.01s/0.46s
+  [  62] obj=180.85     act=594      err= 0.46%/ 0.52% time=0.01s/0.46s
+  [  63] obj=180.63     act=581      err= 0.43%/ 0.45% time=0.01s/0.47s
+  [  64] obj=180.53     act=568      err= 0.43%/ 0.45% time=0.01s/0.48s
+  [  65] obj=180.33     act=573      err= 0.43%/ 0.45% time=0.01s/0.48s
+  [  66] obj=180.24     act=572      err= 0.43%/ 0.45% time=0.01s/0.49s
+  [  67] obj=180.05     act=575      err= 0.43%/ 0.45% time=0.01s/0.50s
+  [  68] obj=179.90     act=569      err= 0.43%/ 0.45% time=0.01s/0.51s
+  [  69] obj=179.75     act=525      err= 0.43%/ 0.45% time=0.01s/0.51s
+  [  70] obj=179.64     act=528      err= 0.43%/ 0.45% time=0.01s/0.52s
+  [  71] obj=179.52     act=517      err= 0.43%/ 0.45% time=0.01s/0.53s
+  [  72] obj=179.38     act=527      err= 0.43%/ 0.45% time=0.01s/0.53s
+  [  73] obj=179.26     act=530      err= 0.43%/ 0.45% time=0.01s/0.54s
+  [  74] obj=179.15     act=518      err= 0.43%/ 0.45% time=0.01s/0.55s
+  [  75] obj=179.07     act=516      err= 0.43%/ 0.45% time=0.01s/0.57s
+  [  76] obj=178.99     act=514      err= 0.43%/ 0.45% time=0.01s/0.58s
+  [  77] obj=178.92     act=495      err= 0.43%/ 0.45% time=0.01s/0.58s
+  [  78] obj=178.79     act=503      err= 0.43%/ 0.45% time=0.01s/0.59s
+  [  79] obj=178.74     act=489      err= 0.43%/ 0.45% time=0.01s/0.60s
+  [  80] obj=178.55     act=494      err= 0.43%/ 0.45% time=0.01s/0.60s
+  [  81] obj=178.46     act=494      err= 0.43%/ 0.45% time=0.01s/0.61s
+  [  82] obj=178.40     act=485      err= 0.43%/ 0.45% time=0.01s/0.62s
+* Save the model
+* Done
+09:42:44.863 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 33127)
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 11 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.16        99.5         99.5         99.5   
+<pow>                99.58        66.67        100          80     
+<prefix>             99.58        100          97.12        98.54  
+
+all fields           99.44        99.15        99.15        99.15   (micro average)
+                     99.44        88.72        98.87        92.68   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               98.17        98.42        99.2         98.81  
+<pow>                99.39        50           100          66.67  
+<prefix>             99.39        100          97.12        98.54  
+
+all fields           98.99        98.15        98.76        98.46   (micro average)
+                     98.99        82.81        98.77        88      (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   374
+Correct instances:          371
+Instance-level recall:      99.2
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 854 ms
+
+BUILD SUCCESSFUL in 3s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:42:46.639 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:42:46.649 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:42:46.650 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:46.650 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:42:46.650 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:46.650 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:42:46.650 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:42:46.654 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:42:46.659 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:42:46.662 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:42:46.662 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:42:46.663 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:42:46.663 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:42:46.665 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:42:46.665 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:42:46.665 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:42:46.665 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:42:46.665 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:42:47.055 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:42:47.055 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:42:47.605 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:42:47.606 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units5844127968249084262.train
+09:42:47.606 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units8353730908932775223.test
+09:42:47.607 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:42:47.608 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:42:47.641 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:42:47.684 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:42:47.688 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:42:47.717 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:42:47.722 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:42:47.726 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:42:47.728 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:42:47.735 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:42:47.755 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:42:47.774 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:42:47.777 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:42:47.779 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:42:47.786 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:42:47.789 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:42:47.797 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:42:47.798 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:42:47.801 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:42:47.812 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:42:47.813 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:42:47.814 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:42:47.818 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:42:47.820 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:42:47.821 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:42:47.823 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:42:47.838 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:42:47.842 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:42:47.844 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:42:47.859 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:42:47.861 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:42:47.867 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:42:47.868 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:42:47.875 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:42:47.881 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:42:47.882 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:42:47.883 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:42:47.885 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:42:47.888 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1302
+    nb labels:   5
+    nb blocks:   820
+    nb features: 4100
+* Train the model with l-bfgs
+  [   1] obj=2263.11    act=3207     err=32.66%/52.00% time=0.08s/0.08s
+  [   2] obj=1489.66    act=3172     err=23.68%/25.27% time=0.04s/0.12s
+  [   3] obj=1224.03    act=3157     err=15.16%/10.37% time=0.04s/0.16s
+  [   4] obj=911.11     act=3004     err=11.49%/ 9.22% time=0.05s/0.22s
+  [   5] obj=518.66     act=2590     err= 4.40%/ 6.76% time=0.04s/0.26s
+  [   6] obj=384.85     act=2567     err= 3.70%/ 4.99% time=0.03s/0.29s
+  [   7] obj=338.89     act=2524     err= 3.24%/ 4.99% time=0.04s/0.33s
+  [   8] obj=298.70     act=2472     err= 1.70%/ 2.69% time=0.04s/0.36s
+  [   9] obj=256.70     act=2379     err= 1.12%/ 1.77% time=0.03s/0.40s
+  [  10] obj=218.33     act=2215     err= 0.50%/ 0.77% time=0.03s/0.43s
+  [  11] obj=179.72     act=1922     err= 0.50%/ 0.77% time=0.01s/0.44s
+  [  12] obj=163.48     act=1787     err= 0.39%/ 0.54% time=0.01s/0.45s
+  [  13] obj=154.32     act=1769     err= 0.39%/ 0.54% time=0.01s/0.46s
+  [  14] obj=149.48     act=1741     err= 0.27%/ 0.31% time=0.01s/0.47s
+  [  15] obj=146.09     act=1670     err= 0.23%/ 0.23% time=0.01s/0.47s
+  [  16] obj=141.10     act=1652     err= 0.23%/ 0.23% time=0.01s/0.48s
+  [  17] obj=137.91     act=1610     err= 0.23%/ 0.23% time=0.01s/0.48s
+  [  18] obj=132.01     act=1489     err= 0.19%/ 0.23% time=0.00s/0.49s
+  [  19] obj=130.66     act=1440     err= 0.23%/ 0.23% time=0.01s/0.50s
+  [  20] obj=128.04     act=1411     err= 0.19%/ 0.23% time=0.01s/0.50s
+  [  21] obj=124.00     act=1246     err= 0.19%/ 0.23% time=0.00s/0.51s
+  [  22] obj=120.98     act=1130     err= 0.19%/ 0.23% time=0.01s/0.52s
+  [  23] obj=117.63     act=1016     err= 0.15%/ 0.15% time=0.00s/0.52s
+  [  24] obj=115.53     act=991      err= 0.15%/ 0.15% time=0.00s/0.53s
+  [  25] obj=113.44     act=939      err= 0.15%/ 0.15% time=0.00s/0.53s
+  [  26] obj=111.92     act=871      err= 0.15%/ 0.15% time=0.01s/0.54s
+  [  27] obj=109.45     act=824      err= 0.15%/ 0.15% time=0.01s/0.54s
+  [  28] obj=108.17     act=751      err= 0.15%/ 0.15% time=0.00s/0.55s
+  [  29] obj=106.81     act=705      err= 0.19%/ 0.23% time=0.00s/0.55s
+  [  30] obj=105.93     act=672      err= 0.19%/ 0.23% time=0.00s/0.56s
+  [  31] obj=105.27     act=695      err= 0.19%/ 0.23% time=0.01s/0.56s
+  [  32] obj=104.69     act=677      err= 0.19%/ 0.23% time=0.01s/0.57s
+  [  33] obj=102.76     act=577      err= 0.19%/ 0.23% time=0.01s/0.57s
+  [  34] obj=101.49     act=539      err= 0.15%/ 0.15% time=0.01s/0.58s
+  [  35] obj=100.84     act=550      err= 0.15%/ 0.15% time=0.01s/0.59s
+  [  36] obj=100.64     act=538      err= 0.15%/ 0.15% time=0.00s/0.59s
+  [  37] obj=99.93      act=546      err= 0.15%/ 0.15% time=0.00s/0.60s
+  [  38] obj=99.61      act=507      err= 0.15%/ 0.15% time=0.00s/0.60s
+  [  39] obj=99.25      act=510      err= 0.15%/ 0.15% time=0.00s/0.61s
+  [  40] obj=98.90      act=519      err= 0.15%/ 0.15% time=0.00s/0.61s
+  [  41] obj=98.57      act=492      err= 0.15%/ 0.15% time=0.00s/0.61s
+  [  42] obj=98.19      act=480      err= 0.19%/ 0.23% time=0.00s/0.62s
+  [  43] obj=97.94      act=471      err= 0.19%/ 0.23% time=0.00s/0.62s
+  [  44] obj=97.74      act=458      err= 0.19%/ 0.23% time=0.00s/0.63s
+  [  45] obj=97.58      act=464      err= 0.19%/ 0.23% time=0.00s/0.63s
+  [  46] obj=97.23      act=437      err= 0.19%/ 0.23% time=0.00s/0.63s
+  [  47] obj=97.10      act=422      err= 0.19%/ 0.23% time=0.00s/0.64s
+  [  48] obj=96.81      act=448      err= 0.19%/ 0.23% time=0.01s/0.64s
+  [  49] obj=96.78      act=408      err= 0.15%/ 0.15% time=0.00s/0.65s
+  [  50] obj=96.56      act=424      err= 0.19%/ 0.23% time=0.00s/0.65s
+  [  51] obj=96.37      act=442      err= 0.15%/ 0.15% time=0.00s/0.66s
+  [  52] obj=96.00      act=421      err= 0.15%/ 0.15% time=0.01s/0.66s
+  [  53] obj=95.89      act=417      err= 0.15%/ 0.15% time=0.01s/0.67s
+  [  54] obj=95.67      act=419      err= 0.15%/ 0.15% time=0.00s/0.67s
+  [  55] obj=95.54      act=431      err= 0.15%/ 0.15% time=0.00s/0.68s
+  [  56] obj=95.36      act=409      err= 0.15%/ 0.15% time=0.00s/0.68s
+  [  57] obj=95.15      act=413      err= 0.15%/ 0.15% time=0.00s/0.68s
+  [  58] obj=95.03      act=397      err= 0.15%/ 0.15% time=0.00s/0.69s
+  [  59] obj=94.90      act=401      err= 0.15%/ 0.15% time=0.00s/0.69s
+  [  60] obj=94.83      act=393      err= 0.15%/ 0.15% time=0.00s/0.70s
+  [  61] obj=94.65      act=369      err= 0.15%/ 0.15% time=0.00s/0.70s
+  [  62] obj=94.59      act=360      err= 0.15%/ 0.15% time=0.00s/0.70s
+  [  63] obj=94.46      act=351      err= 0.15%/ 0.15% time=0.00s/0.71s
+  [  64] obj=94.36      act=382      err= 0.15%/ 0.15% time=0.00s/0.71s
+  [  65] obj=94.22      act=367      err= 0.15%/ 0.15% time=0.00s/0.72s
+  [  66] obj=94.06      act=357      err= 0.15%/ 0.15% time=0.00s/0.72s
+  [  67] obj=94.06      act=370      err= 0.15%/ 0.15% time=0.00s/0.72s
+  [  68] obj=93.84      act=379      err= 0.15%/ 0.15% time=0.01s/0.73s
+  [  69] obj=93.75      act=381      err= 0.15%/ 0.15% time=0.01s/0.74s
+  [  70] obj=93.70      act=395      err= 0.15%/ 0.15% time=0.00s/0.74s
+* Save the model
+* Done
+09:42:48.693 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 21517)
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 17 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               94.11        94.01        98.64        96.27  
+<pow>                97.26        81.82        49.09        61.36  
+<prefix>             97.82        89.6         88.89        89.24  
+
+all fields           96.39        93.19        95.16        94.16   (micro average)
+                     96.39        88.48        78.87        82.29   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               82.12        83.91        88.06        85.93  
+<pow>                95.95        85           39.53        53.97  
+<prefix>             96.09        88.8         88.8         88.8   
+
+all fields           91.39        84.94        84.8         84.87   (micro average)
+                     91.39        85.9         72.13        76.23   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   414
+Correct instances:          372
+Instance-level recall:      89.86
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 1121 ms
+
+BUILD SUCCESSFUL in 3s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:42:49.898 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:42:49.904 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:42:49.905 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:49.905 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:42:49.905 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:49.905 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:42:49.905 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:42:49.908 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:42:49.912 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:42:49.914 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:42:49.917 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:42:49.918 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:42:49.918 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:42:49.919 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:42:49.920 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:42:49.920 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:42:49.920 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:42:49.920 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:42:50.324 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:42:50.324 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:42:51.229 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:42:51.229 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units5609956348252613515.train
+09:42:51.229 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units4223611400147627772.test
+09:42:51.230 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:42:51.230 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:42:51.249 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:42:51.262 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:42:51.266 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:42:51.274 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:42:51.283 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:42:51.288 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:42:51.292 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:42:51.300 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:42:51.314 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:42:51.315 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:42:51.317 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:42:51.319 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:42:51.320 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:42:51.321 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:42:51.325 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:42:51.326 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:42:51.329 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:42:51.330 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:42:51.331 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:42:51.332 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:42:51.332 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:42:51.333 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:42:51.335 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:42:51.336 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:42:51.337 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:42:51.339 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:42:51.341 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:42:51.343 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:42:51.346 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:42:51.348 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:42:51.349 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:42:51.364 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:42:51.371 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:42:51.372 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:42:51.373 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:42:51.374 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:42:51.378 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1164
+    nb labels:   7
+    nb blocks:   1594
+    nb features: 11158
+* Train the model with l-bfgs
+  [   1] obj=2251.14    act=5680     err=36.65%/58.68% time=0.06s/0.06s
+  [   2] obj=1677.50    act=5774     err=26.90%/28.61% time=0.03s/0.09s
+  [   3] obj=1451.10    act=5568     err=17.91%/14.60% time=0.02s/0.10s
+  [   4] obj=1163.76    act=5098     err=17.99%/14.43% time=0.01s/0.11s
+  [   5] obj=821.56     act=4561     err= 9.94%/12.03% time=0.02s/0.13s
+  [   6] obj=692.88     act=4509     err= 7.31%/ 6.96% time=0.01s/0.14s
+  [   7] obj=587.96     act=4447     err= 6.60%/ 6.27% time=0.01s/0.15s
+  [   8] obj=421.50     act=4015     err= 3.46%/ 4.38% time=0.01s/0.16s
+  [   9] obj=371.06     act=3716     err= 2.95%/ 4.90% time=0.01s/0.17s
+  [  10] obj=323.64     act=3715     err= 2.16%/ 3.26% time=0.01s/0.18s
+  [  11] obj=305.72     act=3667     err= 1.92%/ 3.01% time=0.02s/0.19s
+  [  12] obj=272.82     act=3450     err= 1.22%/ 1.89% time=0.01s/0.20s
+  [  13] obj=255.61     act=3079     err= 0.94%/ 1.46% time=0.02s/0.22s
+  [  14] obj=242.12     act=2969     err= 0.94%/ 1.46% time=0.01s/0.23s
+  [  15] obj=236.23     act=2906     err= 0.90%/ 1.37% time=0.01s/0.23s
+  [  16] obj=228.52     act=2706     err= 0.90%/ 1.37% time=0.02s/0.25s
+  [  17] obj=220.37     act=2481     err= 0.75%/ 1.12% time=0.01s/0.26s
+  [  18] obj=212.01     act=2266     err= 0.51%/ 0.60% time=0.02s/0.27s
+  [  19] obj=204.40     act=1962     err= 0.47%/ 0.52% time=0.01s/0.29s
+  [  20] obj=199.94     act=1763     err= 0.47%/ 0.52% time=0.02s/0.30s
+  [  21] obj=194.82     act=1642     err= 0.47%/ 0.52% time=0.01s/0.31s
+  [  22] obj=191.27     act=1481     err= 0.47%/ 0.52% time=0.01s/0.32s
+  [  23] obj=187.85     act=1328     err= 0.47%/ 0.52% time=0.01s/0.33s
+  [  24] obj=185.48     act=1245     err= 0.43%/ 0.43% time=0.01s/0.35s
+  [  25] obj=183.41     act=1124     err= 0.43%/ 0.43% time=0.01s/0.35s
+  [  26] obj=181.54     act=985      err= 0.47%/ 0.52% time=0.02s/0.37s
+  [  27] obj=180.32     act=975      err= 0.47%/ 0.52% time=0.01s/0.38s
+  [  28] obj=179.32     act=942      err= 0.47%/ 0.52% time=0.01s/0.38s
+  [  29] obj=178.11     act=877      err= 0.47%/ 0.52% time=0.02s/0.40s
+  [  30] obj=177.15     act=876      err= 0.47%/ 0.52% time=0.01s/0.41s
+  [  31] obj=176.41     act=887      err= 0.43%/ 0.43% time=0.01s/0.42s
+  [  32] obj=175.82     act=864      err= 0.43%/ 0.43% time=0.01s/0.43s
+  [  33] obj=175.37     act=845      err= 0.43%/ 0.43% time=0.02s/0.45s
+  [  34] obj=174.44     act=833      err= 0.47%/ 0.52% time=0.01s/0.46s
+  [  35] obj=173.96     act=826      err= 0.47%/ 0.52% time=0.01s/0.47s
+  [  36] obj=173.60     act=809      err= 0.47%/ 0.52% time=0.01s/0.48s
+  [  37] obj=173.03     act=805      err= 0.47%/ 0.52% time=0.01s/0.49s
+  [  38] obj=172.66     act=784      err= 0.47%/ 0.52% time=0.02s/0.51s
+  [  39] obj=172.08     act=755      err= 0.43%/ 0.52% time=0.01s/0.52s
+  [  40] obj=171.65     act=740      err= 0.47%/ 0.52% time=0.01s/0.52s
+  [  41] obj=171.40     act=736      err= 0.47%/ 0.52% time=0.02s/0.54s
+  [  42] obj=171.15     act=733      err= 0.47%/ 0.52% time=0.01s/0.55s
+  [  43] obj=170.96     act=718      err= 0.43%/ 0.43% time=0.01s/0.56s
+  [  44] obj=170.74     act=714      err= 0.43%/ 0.43% time=0.02s/0.58s
+  [  45] obj=170.46     act=699      err= 0.43%/ 0.43% time=0.01s/0.58s
+  [  46] obj=170.27     act=684      err= 0.43%/ 0.43% time=0.02s/0.60s
+  [  47] obj=170.01     act=674      err= 0.43%/ 0.43% time=0.01s/0.61s
+  [  48] obj=169.88     act=680      err= 0.43%/ 0.43% time=0.01s/0.61s
+  [  49] obj=169.52     act=676      err= 0.43%/ 0.43% time=0.02s/0.63s
+  [  50] obj=169.39     act=657      err= 0.43%/ 0.43% time=0.01s/0.64s
+  [  51] obj=169.19     act=650      err= 0.43%/ 0.43% time=0.01s/0.65s
+  [  52] obj=169.14     act=639      err= 0.47%/ 0.52% time=0.01s/0.66s
+  [  53] obj=168.83     act=618      err= 0.39%/ 0.43% time=0.01s/0.67s
+  [  54] obj=168.72     act=617      err= 0.43%/ 0.43% time=0.02s/0.69s
+  [  55] obj=168.52     act=614      err= 0.39%/ 0.43% time=0.01s/0.70s
+  [  56] obj=168.35     act=612      err= 0.47%/ 0.52% time=0.01s/0.70s
+  [  57] obj=168.11     act=620      err= 0.43%/ 0.43% time=0.01s/0.72s
+  [  58] obj=168.02     act=603      err= 0.47%/ 0.52% time=0.01s/0.73s
+  [  59] obj=167.72     act=598      err= 0.43%/ 0.43% time=0.02s/0.74s
+  [  60] obj=167.62     act=589      err= 0.43%/ 0.43% time=0.01s/0.75s
+  [  61] obj=167.39     act=596      err= 0.43%/ 0.43% time=0.02s/0.77s
+  [  62] obj=167.31     act=585      err= 0.43%/ 0.43% time=0.01s/0.78s
+  [  63] obj=167.13     act=589      err= 0.43%/ 0.43% time=0.01s/0.79s
+  [  64] obj=167.02     act=580      err= 0.43%/ 0.43% time=0.02s/0.80s
+  [  65] obj=166.86     act=571      err= 0.43%/ 0.43% time=0.01s/0.81s
+  [  66] obj=166.75     act=558      err= 0.43%/ 0.43% time=0.02s/0.83s
+  [  67] obj=166.67     act=552      err= 0.43%/ 0.43% time=0.01s/0.84s
+  [  68] obj=166.54     act=555      err= 0.43%/ 0.43% time=0.01s/0.84s
+  [  69] obj=166.44     act=549      err= 0.43%/ 0.43% time=0.01s/0.86s
+  [  70] obj=166.31     act=546      err= 0.43%/ 0.43% time=0.01s/0.87s
+  [  71] obj=166.21     act=534      err= 0.43%/ 0.43% time=0.02s/0.88s
+  [  72] obj=166.09     act=536      err= 0.43%/ 0.43% time=0.01s/0.90s
+  [  73] obj=166.01     act=529      err= 0.43%/ 0.43% time=0.01s/0.90s
+  [  74] obj=165.88     act=536      err= 0.43%/ 0.43% time=0.02s/0.92s
+  [  75] obj=165.80     act=514      err= 0.43%/ 0.43% time=0.01s/0.93s
+  [  76] obj=165.65     act=525      err= 0.43%/ 0.43% time=0.02s/0.94s
+  [  77] obj=165.57     act=507      err= 0.43%/ 0.43% time=0.01s/0.95s
+  [  78] obj=165.46     act=521      err= 0.43%/ 0.43% time=0.01s/0.96s
+* Save the model
+* Done
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+09:42:52.429 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 34334)
+Labeling took: 25 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.75        99.81        99.9         99.85  
+<pow>                100          100          100          100    
+<prefix>             99.75        99.29        98.58        98.93  
+
+all fields           99.83        99.75        99.75        99.75   (micro average)
+                     99.83        99.7         99.49        99.6    (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.46        99.48        99.82        99.65  
+<pow>                100          100          100          100    
+<prefix>             99.59        99.29        98.58        98.93  
+
+all fields           99.68        99.45        99.59        99.52   (micro average)
+                     99.68        99.59        99.47        99.53   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   552
+Correct instances:          549
+Instance-level recall:      99.46
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 1251 ms
+
+BUILD SUCCESSFUL in 3s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:42:53.949 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:42:53.954 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:42:53.954 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:53.954 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:42:53.954 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:53.954 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:42:53.954 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:42:53.957 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:42:53.961 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:42:53.963 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:42:53.964 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:42:53.964 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:42:53.964 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:42:53.966 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:42:53.966 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:42:53.967 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:42:53.967 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:42:53.967 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:42:54.380 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:42:54.380 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:42:54.963 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:42:54.963 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units1949282316975945.train
+09:42:54.963 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units2604487782330324268.test
+09:42:54.963 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:42:54.964 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:42:54.976 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:42:54.989 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:42:54.993 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:42:55.006 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:42:55.015 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:42:55.020 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:42:55.024 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:42:55.031 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:42:55.043 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:42:55.044 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:42:55.045 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:42:55.046 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:42:55.047 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:42:55.049 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:42:55.053 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:42:55.054 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:42:55.057 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:42:55.058 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:42:55.062 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:42:55.063 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:42:55.063 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:42:55.064 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:42:55.066 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:42:55.067 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:42:55.068 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:42:55.070 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:42:55.071 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:42:55.073 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:42:55.074 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:42:55.076 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:42:55.077 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:42:55.083 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:42:55.087 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:42:55.092 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:42:55.093 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:42:55.094 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:42:55.097 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1306
+    nb labels:   7
+    nb blocks:   1556
+    nb features: 10892
+* Train the model with l-bfgs
+  [   1] obj=2431.02    act=5663     err=29.01%/43.87% time=0.01s/0.01s
+  [   2] obj=1837.38    act=5674     err=24.41%/34.15% time=0.02s/0.03s
+  [   3] obj=1564.65    act=5583     err=15.85%/13.32% time=0.01s/0.04s
+  [   4] obj=1302.77    act=5307     err=14.52%/13.32% time=0.01s/0.05s
+  [   5] obj=914.43     act=4670     err= 7.78%/ 9.88% time=0.02s/0.07s
+  [   6] obj=698.62     act=4402     err= 6.97%/ 8.12% time=0.01s/0.08s
+  [   7] obj=544.39     act=4280     err= 4.12%/ 4.82% time=0.02s/0.10s
+  [   8] obj=441.27     act=4136     err= 2.72%/ 3.68% time=0.01s/0.11s
+  [   9] obj=398.26     act=4098     err= 2.53%/ 3.37% time=0.02s/0.12s
+  [  10] obj=362.68     act=3998     err= 2.20%/ 3.14% time=0.01s/0.13s
+  [  11] obj=321.20     act=3655     err= 1.52%/ 2.45% time=0.01s/0.14s
+  [  12] obj=293.78     act=3319     err= 1.20%/ 2.14% time=0.02s/0.16s
+  [  13] obj=275.80     act=3247     err= 1.10%/ 1.76% time=0.01s/0.17s
+  [  14] obj=265.67     act=3166     err= 1.00%/ 1.61% time=0.02s/0.18s
+  [  15] obj=259.00     act=2990     err= 0.84%/ 1.30% time=0.01s/0.20s
+  [  16] obj=250.59     act=2969     err= 0.75%/ 1.15% time=0.02s/0.21s
+  [  17] obj=246.06     act=2878     err= 0.75%/ 1.15% time=0.01s/0.22s
+  [  18] obj=237.98     act=2674     err= 0.65%/ 1.00% time=0.02s/0.24s
+  [  19] obj=229.29     act=2388     err= 0.52%/ 0.69% time=0.02s/0.26s
+  [  20] obj=221.46     act=2042     err= 0.45%/ 0.61% time=0.04s/0.30s
+  [  21] obj=215.78     act=1911     err= 0.45%/ 0.54% time=0.04s/0.35s
+  [  22] obj=211.34     act=1739     err= 0.45%/ 0.54% time=0.05s/0.40s
+  [  23] obj=207.03     act=1562     err= 0.45%/ 0.54% time=0.04s/0.44s
+  [  24] obj=203.26     act=1433     err= 0.42%/ 0.46% time=0.03s/0.47s
+  [  25] obj=201.73     act=1386     err= 0.42%/ 0.46% time=0.05s/0.51s
+  [  26] obj=198.97     act=1255     err= 0.42%/ 0.46% time=0.04s/0.55s
+  [  27] obj=196.23     act=1105     err= 0.45%/ 0.54% time=0.05s/0.60s
+  [  28] obj=194.46     act=1103     err= 0.42%/ 0.46% time=0.04s/0.64s
+  [  29] obj=193.08     act=1054     err= 0.42%/ 0.46% time=0.06s/0.70s
+  [  30] obj=190.80     act=892      err= 0.45%/ 0.54% time=0.05s/0.75s
+  [  31] obj=189.39     act=910      err= 0.39%/ 0.46% time=0.04s/0.79s
+  [  32] obj=188.51     act=924      err= 0.42%/ 0.54% time=0.04s/0.83s
+  [  33] obj=187.64     act=886      err= 0.42%/ 0.54% time=0.05s/0.88s
+  [  34] obj=187.22     act=837      err= 0.39%/ 0.54% time=0.03s/0.91s
+  [  35] obj=186.32     act=834      err= 0.45%/ 0.54% time=0.04s/0.95s
+  [  36] obj=185.67     act=824      err= 0.39%/ 0.46% time=0.04s/0.99s
+  [  37] obj=185.19     act=819      err= 0.42%/ 0.46% time=0.03s/1.02s
+  [  38] obj=184.82     act=793      err= 0.39%/ 0.46% time=0.04s/1.07s
+  [  39] obj=184.46     act=771      err= 0.42%/ 0.46% time=0.01s/1.08s
+  [  40] obj=183.88     act=743      err= 0.42%/ 0.46% time=0.03s/1.11s
+  [  41] obj=183.56     act=720      err= 0.42%/ 0.46% time=0.02s/1.13s
+  [  42] obj=183.09     act=698      err= 0.42%/ 0.46% time=0.03s/1.16s
+  [  43] obj=182.58     act=701      err= 0.45%/ 0.54% time=0.02s/1.18s
+  [  44] obj=182.30     act=677      err= 0.42%/ 0.46% time=0.02s/1.20s
+  [  45] obj=181.96     act=669      err= 0.45%/ 0.54% time=0.02s/1.22s
+  [  46] obj=181.57     act=656      err= 0.42%/ 0.46% time=0.01s/1.24s
+  [  47] obj=181.22     act=655      err= 0.45%/ 0.54% time=0.02s/1.26s
+  [  48] obj=180.82     act=660      err= 0.42%/ 0.46% time=0.01s/1.27s
+  [  49] obj=180.59     act=647      err= 0.42%/ 0.46% time=0.01s/1.28s
+  [  50] obj=180.25     act=630      err= 0.42%/ 0.46% time=0.02s/1.30s
+  [  51] obj=180.05     act=618      err= 0.42%/ 0.46% time=0.01s/1.31s
+  [  52] obj=179.83     act=609      err= 0.42%/ 0.46% time=0.02s/1.33s
+  [  53] obj=179.54     act=604      err= 0.42%/ 0.46% time=0.01s/1.34s
+  [  54] obj=179.30     act=571      err= 0.42%/ 0.46% time=0.01s/1.35s
+  [  55] obj=179.17     act=568      err= 0.42%/ 0.46% time=0.02s/1.37s
+  [  56] obj=178.91     act=590      err= 0.42%/ 0.46% time=0.01s/1.38s
+  [  57] obj=178.75     act=576      err= 0.42%/ 0.46% time=0.02s/1.39s
+  [  58] obj=178.51     act=572      err= 0.42%/ 0.46% time=0.01s/1.40s
+  [  59] obj=178.39     act=589      err= 0.42%/ 0.46% time=0.01s/1.41s
+  [  60] obj=178.11     act=578      err= 0.39%/ 0.46% time=0.02s/1.43s
+  [  61] obj=177.85     act=565      err= 0.42%/ 0.46% time=0.01s/1.44s
+  [  62] obj=177.72     act=561      err= 0.42%/ 0.46% time=0.02s/1.46s
+  [  63] obj=177.60     act=569      err= 0.42%/ 0.46% time=0.01s/1.46s
+  [  64] obj=177.44     act=538      err= 0.42%/ 0.46% time=0.05s/1.51s
+  [  65] obj=177.30     act=517      err= 0.42%/ 0.46% time=0.03s/1.55s
+  [  66] obj=177.20     act=510      err= 0.42%/ 0.46% time=0.04s/1.58s
+  [  67] obj=177.08     act=512      err= 0.42%/ 0.46% time=0.04s/1.62s
+  [  68] obj=176.97     act=499      err= 0.42%/ 0.46% time=0.03s/1.65s
+  [  69] obj=176.88     act=510      err= 0.45%/ 0.54% time=0.02s/1.67s
+  [  70] obj=176.78     act=505      err= 0.39%/ 0.46% time=0.02s/1.69s
+  [  71] obj=176.59     act=502      err= 0.42%/ 0.46% time=0.02s/1.71s
+  [  72] obj=176.53     act=509      err= 0.42%/ 0.46% time=0.01s/1.72s
+  [  73] obj=176.41     act=527      err= 0.42%/ 0.46% time=0.01s/1.72s
+  [  74] obj=176.35     act=499      err= 0.42%/ 0.46% time=0.02s/1.74s
+  [  75] obj=176.24     act=482      err= 0.42%/ 0.46% time=0.01s/1.75s
+  [  76] obj=176.16     act=468      err= 0.42%/ 0.46% time=0.01s/1.76s
+  [  77] obj=176.07     act=473      err= 0.42%/ 0.46% time=0.02s/1.77s
+  [  78] obj=176.00     act=461      err= 0.42%/ 0.46% time=0.01s/1.78s
+  [  79] obj=175.90     act=469      err= 0.42%/ 0.46% time=0.02s/1.80s
+  [  80] obj=175.85     act=448      err= 0.42%/ 0.46% time=0.01s/1.81s
+  [  81] obj=175.77     act=482      err= 0.42%/ 0.46% time=0.01s/1.82s
+  [  82] obj=175.73     act=478      err= 0.42%/ 0.46% time=0.02s/1.83s
+  [  83] obj=175.67     act=476      err= 0.42%/ 0.46% time=0.01s/1.84s
+  [  84] obj=175.63     act=476      err= 0.42%/ 0.46% time=0.02s/1.86s
+  [  85] obj=175.54     act=471      err= 0.42%/ 0.46% time=0.01s/1.87s
+  [  86] obj=175.51     act=457      err= 0.42%/ 0.46% time=0.01s/1.88s
+  [  87] obj=175.44     act=461      err= 0.42%/ 0.46% time=0.02s/1.90s
+  [  88] obj=175.41     act=451      err= 0.42%/ 0.46% time=0.01s/1.90s
+  [  89] obj=175.33     act=447      err= 0.42%/ 0.46% time=0.02s/1.92s
+  [  90] obj=175.29     act=444      err= 0.42%/ 0.46% time=0.01s/1.93s
+* Save the model
+* Done
+09:42:57.084 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 31839)
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 14 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               100          100          100          100    
+<pow>                100          100          100          100    
+<prefix>             100          100          100          100    
+
+all fields           100          100          100          100     (micro average)
+                     100          100          100          100     (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               98.8         99.07        99.53        99.3   
+<pow>                100          100          100          100    
+<prefix>             100          100          100          100    
+
+all fields           99.6         99.2         99.6         99.4    (micro average)
+                     99.6         99.69        99.84        99.77   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   410
+Correct instances:          410
+Instance-level recall:      100
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 2149 ms
+
+BUILD SUCCESSFUL in 4s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:42:58.140 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:42:58.158 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:42:58.159 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:58.159 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:42:58.159 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:42:58.159 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:42:58.159 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:42:58.162 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:42:58.166 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:42:58.169 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:42:58.169 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:42:58.182 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:42:58.182 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:42:58.184 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:42:58.184 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:42:58.184 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:42:58.184 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:42:58.184 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:42:58.850 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:42:58.850 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:42:59.607 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:42:59.612 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units5399139300589271124.train
+09:42:59.612 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units6890388640690948841.test
+09:42:59.613 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:42:59.613 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:42:59.627 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:42:59.638 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:42:59.645 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:42:59.652 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:42:59.659 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:42:59.661 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:42:59.663 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:42:59.665 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:42:59.671 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:42:59.675 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:42:59.677 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:42:59.679 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:42:59.680 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:42:59.682 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:42:59.688 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:42:59.689 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:42:59.692 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:42:59.697 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:42:59.698 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:42:59.699 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:42:59.701 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:42:59.702 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:42:59.704 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:42:59.705 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:42:59.707 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:42:59.709 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:42:59.713 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:42:59.714 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:42:59.716 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:42:59.718 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:42:59.718 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:42:59.723 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:42:59.726 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:42:59.727 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:42:59.728 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:42:59.729 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:42:59.732 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1058
+    nb labels:   7
+    nb blocks:   1582
+    nb features: 11074
+* Train the model with l-bfgs
+  [   1] obj=2041.25    act=5686     err=23.55%/27.69% time=0.02s/0.02s
+  [   2] obj=1622.44    act=5539     err=29.81%/27.22% time=0.01s/0.03s
+  [   3] obj=1321.72    act=5059     err=20.97%/22.68% time=0.00s/0.03s
+  [   4] obj=1091.97    act=5036     err=15.49%/12.95% time=0.01s/0.05s
+  [   5] obj=879.54     act=4737     err=10.09%/10.78% time=0.01s/0.06s
+  [   6] obj=645.24     act=4260     err= 7.71%/ 7.94% time=0.01s/0.06s
+  [   7] obj=538.66     act=4353     err= 4.93%/ 5.67% time=0.01s/0.08s
+  [   8] obj=454.85     act=4249     err= 4.58%/ 5.67% time=0.01s/0.09s
+  [   9] obj=411.88     act=4105     err= 3.72%/ 5.20% time=0.01s/0.09s
+  [  10] obj=362.27     act=3892     err= 2.62%/ 3.97% time=0.02s/0.11s
+  [  11] obj=319.61     act=3688     err= 2.00%/ 3.12% time=0.01s/0.12s
+  [  12] obj=286.26     act=3456     err= 1.60%/ 2.74% time=0.01s/0.13s
+  [  13] obj=268.00     act=3215     err= 1.21%/ 2.27% time=0.01s/0.14s
+  [  14] obj=257.45     act=3111     err= 1.10%/ 1.98% time=0.01s/0.15s
+  [  15] obj=250.99     act=2974     err= 0.98%/ 1.70% time=0.02s/0.17s
+  [  16] obj=238.34     act=2654     err= 0.86%/ 1.42% time=0.01s/0.18s
+  [  17] obj=231.71     act=2451     err= 0.78%/ 1.23% time=0.01s/0.18s
+  [  18] obj=224.00     act=2386     err= 0.63%/ 0.85% time=0.02s/0.20s
+  [  19] obj=219.29     act=2230     err= 0.59%/ 0.76% time=0.01s/0.21s
+  [  20] obj=213.00     act=1925     err= 0.55%/ 0.66% time=0.01s/0.21s
+  [  21] obj=206.69     act=1744     err= 0.55%/ 0.66% time=0.02s/0.23s
+  [  22] obj=202.04     act=1623     err= 0.55%/ 0.66% time=0.01s/0.24s
+  [  23] obj=197.62     act=1403     err= 0.51%/ 0.57% time=0.01s/0.24s
+  [  24] obj=194.44     act=1273     err= 0.51%/ 0.57% time=0.02s/0.26s
+  [  25] obj=192.92     act=1203     err= 0.55%/ 0.66% time=0.01s/0.27s
+  [  26] obj=191.38     act=1101     err= 0.51%/ 0.57% time=0.01s/0.27s
+  [  27] obj=189.76     act=1043     err= 0.55%/ 0.66% time=0.01s/0.29s
+  [  28] obj=188.72     act=1010     err= 0.51%/ 0.57% time=0.01s/0.30s
+  [  29] obj=187.40     act=1010     err= 0.51%/ 0.66% time=0.01s/0.30s
+  [  30] obj=186.72     act=993      err= 0.51%/ 0.57% time=0.02s/0.32s
+  [  31] obj=185.60     act=973      err= 0.55%/ 0.66% time=0.01s/0.32s
+  [  32] obj=184.83     act=916      err= 0.55%/ 0.66% time=0.01s/0.33s
+  [  33] obj=183.78     act=889      err= 0.51%/ 0.57% time=0.01s/0.34s
+  [  34] obj=183.24     act=890      err= 0.55%/ 0.66% time=0.01s/0.35s
+  [  35] obj=182.68     act=861      err= 0.51%/ 0.57% time=0.01s/0.36s
+  [  36] obj=182.35     act=831      err= 0.55%/ 0.66% time=0.01s/0.37s
+  [  37] obj=181.51     act=823      err= 0.51%/ 0.66% time=0.01s/0.38s
+  [  38] obj=181.18     act=818      err= 0.51%/ 0.66% time=0.01s/0.39s
+  [  39] obj=180.70     act=806      err= 0.55%/ 0.66% time=0.01s/0.40s
+  [  40] obj=180.57     act=749      err= 0.55%/ 0.66% time=0.01s/0.41s
+  [  41] obj=179.78     act=752      err= 0.55%/ 0.66% time=0.01s/0.42s
+  [  42] obj=179.41     act=744      err= 0.55%/ 0.66% time=0.02s/0.43s
+  [  43] obj=179.14     act=749      err= 0.51%/ 0.57% time=0.01s/0.44s
+  [  44] obj=178.82     act=742      err= 0.55%/ 0.66% time=0.02s/0.46s
+  [  45] obj=178.60     act=714      err= 0.51%/ 0.57% time=0.01s/0.47s
+  [  46] obj=178.39     act=709      err= 0.51%/ 0.57% time=0.01s/0.47s
+  [  47] obj=177.95     act=711      err= 0.51%/ 0.57% time=0.02s/0.49s
+  [  48] obj=177.72     act=698      err= 0.51%/ 0.57% time=0.01s/0.50s
+  [  49] obj=177.46     act=695      err= 0.51%/ 0.57% time=0.01s/0.50s
+  [  50] obj=177.22     act=679      err= 0.51%/ 0.57% time=0.01s/0.52s
+  [  51] obj=176.99     act=650      err= 0.51%/ 0.57% time=0.01s/0.53s
+  [  52] obj=176.70     act=641      err= 0.51%/ 0.57% time=0.01s/0.53s
+  [  53] obj=176.55     act=638      err= 0.51%/ 0.57% time=0.02s/0.55s
+  [  54] obj=176.39     act=633      err= 0.51%/ 0.57% time=0.01s/0.56s
+  [  55] obj=176.26     act=628      err= 0.51%/ 0.57% time=0.02s/0.57s
+  [  56] obj=176.09     act=617      err= 0.51%/ 0.57% time=0.01s/0.58s
+  [  57] obj=176.02     act=604      err= 0.51%/ 0.57% time=0.01s/0.59s
+  [  58] obj=175.78     act=591      err= 0.51%/ 0.57% time=0.02s/0.61s
+  [  59] obj=175.75     act=576      err= 0.51%/ 0.57% time=0.01s/0.62s
+  [  60] obj=175.47     act=584      err= 0.51%/ 0.57% time=0.01s/0.62s
+  [  61] obj=175.33     act=574      err= 0.51%/ 0.57% time=0.02s/0.64s
+  [  62] obj=175.21     act=577      err= 0.55%/ 0.66% time=0.01s/0.65s
+  [  63] obj=175.12     act=551      err= 0.51%/ 0.57% time=0.02s/0.67s
+  [  64] obj=174.96     act=545      err= 0.55%/ 0.66% time=0.01s/0.68s
+  [  65] obj=174.91     act=554      err= 0.51%/ 0.57% time=0.02s/0.70s
+  [  66] obj=174.82     act=530      err= 0.55%/ 0.66% time=0.01s/0.71s
+  [  67] obj=174.71     act=536      err= 0.51%/ 0.57% time=0.01s/0.71s
+  [  68] obj=174.55     act=540      err= 0.55%/ 0.66% time=0.02s/0.73s
+  [  69] obj=174.48     act=509      err= 0.51%/ 0.57% time=0.01s/0.74s
+  [  70] obj=174.41     act=520      err= 0.55%/ 0.66% time=0.01s/0.74s
+  [  71] obj=174.27     act=498      err= 0.51%/ 0.57% time=0.02s/0.76s
+  [  72] obj=174.17     act=513      err= 0.55%/ 0.66% time=0.01s/0.77s
+  [  73] obj=174.14     act=493      err= 0.51%/ 0.57% time=0.00s/0.77s
+  [  74] obj=173.95     act=530      err= 0.55%/ 0.66% time=0.01s/0.79s
+  [  75] obj=173.88     act=506      err= 0.51%/ 0.57% time=0.01s/0.80s
+  [  76] obj=173.75     act=512      err= 0.55%/ 0.66% time=0.01s/0.80s
+  [  77] obj=173.67     act=507      err= 0.51%/ 0.57% time=0.02s/0.82s
+  [  78] obj=173.59     act=502      err= 0.55%/ 0.66% time=0.01s/0.83s
+  [  79] obj=173.49     act=496      err= 0.47%/ 0.57% time=0.02s/0.84s
+  [  80] obj=173.41     act=496      err= 0.55%/ 0.66% time=0.01s/0.85s
+  [  81] obj=173.30     act=465      err= 0.47%/ 0.57% time=0.00s/0.86s
+  [  82] obj=173.22     act=464      err= 0.51%/ 0.57% time=0.02s/0.87s
+  [  83] obj=173.10     act=465      err= 0.51%/ 0.57% time=0.02s/0.90s
+  [  84] obj=173.05     act=462      err= 0.51%/ 0.57% time=0.04s/0.93s
+  [  85] obj=172.91     act=460      err= 0.51%/ 0.57% time=0.03s/0.96s
+  [  86] obj=172.85     act=460      err= 0.51%/ 0.57% time=0.03s/0.99s
+  [  87] obj=172.75     act=458      err= 0.51%/ 0.57% time=0.04s/1.03s
+  [  88] obj=172.67     act=454      err= 0.51%/ 0.57% time=0.04s/1.06s
+  [  89] obj=172.60     act=446      err= 0.51%/ 0.57% time=0.04s/1.10s
+  [  90] obj=172.52     act=452      err= 0.51%/ 0.57% time=0.04s/1.14s
+  [  91] obj=172.45     act=447      err= 0.51%/ 0.57% time=0.03s/1.18s
+  [  92] obj=172.38     act=458      err= 0.51%/ 0.57% time=0.04s/1.22s
+  [  93] obj=172.32     act=457      err= 0.51%/ 0.57% time=0.04s/1.25s
+  [  94] obj=172.24     act=461      err= 0.51%/ 0.57% time=0.05s/1.30s
+  [  95] obj=172.17     act=457      err= 0.51%/ 0.57% time=0.04s/1.34s
+  [  96] obj=172.13     act=460      err= 0.51%/ 0.57% time=0.04s/1.37s
+  [  97] obj=172.04     act=453      err= 0.51%/ 0.57% time=0.04s/1.42s
+  [  98] obj=171.98     act=448      err= 0.51%/ 0.57% time=0.03s/1.45s
+  [  99] obj=171.91     act=441      err= 0.51%/ 0.57% time=0.05s/1.50s
+  [ 100] obj=171.86     act=446      err= 0.51%/ 0.57% time=0.05s/1.54s
+  [ 101] obj=171.79     act=444      err= 0.51%/ 0.57% time=0.04s/1.58s
+* Save the model
+* Done
+09:43:01.357 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 32194)
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 51 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.75        99.69        100          99.85  
+<pow>                100          100          100          100    
+<prefix>             99.75        100          98.35        99.17  
+
+all fields           99.83        99.75        99.75        99.75   (micro average)
+                     99.83        99.9         99.45        99.67   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.66        99.56        100          99.78  
+<pow>                100          100          100          100    
+<prefix>             99.66        100          98.35        99.17  
+
+all fields           99.77        99.66        99.66        99.66   (micro average)
+                     99.77        99.85        99.45        99.65   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   658
+Correct instances:          655
+Instance-level recall:      99.54
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 1843 ms
+
+BUILD SUCCESSFUL in 4s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:43:02.566 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:43:02.573 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:43:02.573 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:43:02.574 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:43:02.574 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:43:02.574 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:43:02.574 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:43:02.577 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:43:02.579 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:43:02.582 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:43:02.582 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:43:02.583 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:43:02.583 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:43:02.584 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:43:02.584 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:43:02.585 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:43:02.585 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:43:02.585 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:43:02.936 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:43:02.936 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:43:03.812 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:43:03.812 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units3969869614575772785.train
+09:43:03.812 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units3471900541603270752.test
+09:43:03.813 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:43:03.814 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:43:03.835 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:43:03.872 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:43:03.876 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:43:03.895 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:43:03.923 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:43:03.933 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:43:03.950 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:43:03.953 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:43:03.984 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:43:04.002 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:43:04.004 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:43:04.005 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:43:04.006 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:43:04.008 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:43:04.012 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:43:04.012 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:43:04.016 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:43:04.022 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:43:04.023 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:43:04.024 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:43:04.028 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:43:04.028 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:43:04.030 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:43:04.034 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:43:04.052 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:43:04.054 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:43:04.056 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:43:04.059 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:43:04.063 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:43:04.065 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:43:04.069 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:43:04.091 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:43:04.095 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:43:04.097 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:43:04.098 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:43:04.102 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:43:04.119 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1194
+    nb labels:   7
+    nb blocks:   1595
+    nb features: 11165
+* Train the model with l-bfgs
+  [   1] obj=2473.48    act=5772     err=38.32%/57.96% time=0.04s/0.04s
+  [   2] obj=1970.38    act=5938     err=32.68%/25.54% time=0.02s/0.06s
+  [   3] obj=1689.39    act=5828     err=26.33%/25.71% time=0.01s/0.07s
+  [   4] obj=1305.12    act=5430     err=13.20%/14.41% time=0.02s/0.09s
+  [   5] obj=932.89     act=5003     err=10.79%/12.81% time=0.01s/0.10s
+  [   6] obj=771.85     act=4926     err= 9.18%/ 9.97% time=0.02s/0.13s
+  [   7] obj=644.42     act=4745     err= 7.00%/ 9.05% time=0.02s/0.14s
+  [   8] obj=548.79     act=4552     err= 4.32%/ 4.10% time=0.02s/0.16s
+  [   9] obj=474.39     act=4330     err= 3.54%/ 4.02% time=0.02s/0.18s
+  [  10] obj=398.95     act=4080     err= 2.48%/ 3.10% time=0.01s/0.18s
+  [  11] obj=323.54     act=3509     err= 1.81%/ 3.02% time=0.02s/0.20s
+  [  12] obj=301.06     act=3295     err= 1.20%/ 2.01% time=0.01s/0.21s
+  [  13] obj=270.87     act=3264     err= 1.20%/ 2.01% time=0.02s/0.23s
+  [  14] obj=263.12     act=3226     err= 1.09%/ 1.84% time=0.01s/0.24s
+  [  15] obj=251.87     act=2897     err= 0.94%/ 1.51% time=0.01s/0.25s
+  [  16] obj=243.12     act=2825     err= 0.83%/ 1.26% time=0.02s/0.26s
+  [  17] obj=237.84     act=2787     err= 0.79%/ 1.17% time=0.01s/0.27s
+  [  18] obj=230.67     act=2603     err= 0.71%/ 1.01% time=0.01s/0.28s
+  [  19] obj=225.15     act=2487     err= 0.68%/ 1.01% time=0.02s/0.30s
+  [  20] obj=220.31     act=2338     err= 0.49%/ 0.59% time=0.01s/0.30s
+  [  21] obj=212.85     act=2100     err= 0.49%/ 0.59% time=0.02s/0.32s
+  [  22] obj=205.93     act=1798     err= 0.45%/ 0.50% time=0.01s/0.33s
+  [  23] obj=200.18     act=1616     err= 0.41%/ 0.42% time=0.02s/0.34s
+  [  24] obj=195.55     act=1470     err= 0.41%/ 0.42% time=0.01s/0.35s
+  [  25] obj=192.51     act=1339     err= 0.41%/ 0.42% time=0.01s/0.36s
+  [  26] obj=189.42     act=1274     err= 0.41%/ 0.42% time=0.02s/0.38s
+  [  27] obj=187.52     act=1210     err= 0.41%/ 0.42% time=0.01s/0.38s
+  [  28] obj=185.70     act=1109     err= 0.41%/ 0.42% time=0.01s/0.39s
+  [  29] obj=184.33     act=1041     err= 0.41%/ 0.42% time=0.01s/0.40s
+  [  30] obj=183.51     act=1007     err= 0.45%/ 0.50% time=0.01s/0.41s
+  [  31] obj=182.56     act=957      err= 0.45%/ 0.50% time=0.02s/0.44s
+  [  32] obj=181.83     act=943      err= 0.45%/ 0.50% time=0.04s/0.47s
+  [  33] obj=181.09     act=913      err= 0.45%/ 0.50% time=0.04s/0.51s
+  [  34] obj=180.49     act=894      err= 0.45%/ 0.50% time=0.03s/0.54s
+  [  35] obj=179.81     act=869      err= 0.45%/ 0.50% time=0.04s/0.58s
+  [  36] obj=179.31     act=854      err= 0.45%/ 0.50% time=0.02s/0.60s
+  [  37] obj=178.79     act=832      err= 0.45%/ 0.50% time=0.02s/0.62s
+  [  38] obj=178.39     act=822      err= 0.45%/ 0.50% time=0.01s/0.64s
+  [  39] obj=177.84     act=790      err= 0.41%/ 0.42% time=0.02s/0.65s
+  [  40] obj=177.63     act=757      err= 0.41%/ 0.42% time=0.01s/0.67s
+  [  41] obj=176.93     act=766      err= 0.41%/ 0.42% time=0.01s/0.67s
+  [  42] obj=176.61     act=752      err= 0.41%/ 0.42% time=0.02s/0.69s
+  [  43] obj=175.92     act=720      err= 0.41%/ 0.42% time=0.01s/0.70s
+  [  44] obj=175.54     act=732      err= 0.41%/ 0.42% time=0.02s/0.72s
+  [  45] obj=175.38     act=742      err= 0.41%/ 0.42% time=0.01s/0.73s
+  [  46] obj=174.83     act=716      err= 0.45%/ 0.50% time=0.01s/0.73s
+  [  47] obj=174.59     act=707      err= 0.41%/ 0.42% time=0.02s/0.75s
+  [  48] obj=174.10     act=698      err= 0.45%/ 0.50% time=0.01s/0.76s
+  [  49] obj=173.91     act=687      err= 0.41%/ 0.42% time=0.01s/0.76s
+  [  50] obj=173.41     act=692      err= 0.45%/ 0.50% time=0.01s/0.78s
+  [  51] obj=173.23     act=680      err= 0.41%/ 0.42% time=0.01s/0.78s
+  [  52] obj=172.76     act=672      err= 0.45%/ 0.50% time=0.02s/0.80s
+  [  53] obj=172.65     act=656      err= 0.45%/ 0.50% time=0.01s/0.81s
+  [  54] obj=172.29     act=646      err= 0.45%/ 0.50% time=0.01s/0.82s
+  [  55] obj=172.17     act=644      err= 0.45%/ 0.50% time=0.02s/0.83s
+  [  56] obj=171.95     act=636      err= 0.45%/ 0.50% time=0.01s/0.84s
+  [  57] obj=171.70     act=622      err= 0.41%/ 0.42% time=0.01s/0.86s
+  [  58] obj=171.53     act=619      err= 0.45%/ 0.50% time=0.01s/0.87s
+  [  59] obj=171.34     act=599      err= 0.41%/ 0.42% time=0.01s/0.87s
+  [  60] obj=171.17     act=582      err= 0.45%/ 0.50% time=0.02s/0.89s
+  [  61] obj=170.90     act=579      err= 0.41%/ 0.42% time=0.01s/0.90s
+  [  62] obj=170.77     act=579      err= 0.41%/ 0.42% time=0.01s/0.90s
+  [  63] obj=170.64     act=558      err= 0.41%/ 0.42% time=0.01s/0.92s
+  [  64] obj=170.44     act=562      err= 0.41%/ 0.42% time=0.01s/0.93s
+  [  65] obj=170.35     act=541      err= 0.41%/ 0.42% time=0.02s/0.94s
+  [  66] obj=170.23     act=538      err= 0.41%/ 0.42% time=0.02s/0.96s
+  [  67] obj=170.07     act=528      err= 0.41%/ 0.42% time=0.01s/0.97s
+  [  68] obj=169.86     act=522      err= 0.41%/ 0.42% time=0.01s/0.97s
+  [  69] obj=169.66     act=508      err= 0.41%/ 0.42% time=0.02s/0.99s
+  [  70] obj=169.59     act=524      err= 0.41%/ 0.42% time=0.01s/1.01s
+  [  71] obj=169.32     act=525      err= 0.41%/ 0.42% time=0.03s/1.03s
+  [  72] obj=169.21     act=517      err= 0.41%/ 0.42% time=0.01s/1.05s
+  [  73] obj=169.10     act=515      err= 0.41%/ 0.42% time=0.01s/1.05s
+  [  74] obj=168.99     act=529      err= 0.41%/ 0.42% time=0.03s/1.08s
+  [  75] obj=168.92     act=502      err= 0.41%/ 0.42% time=0.01s/1.09s
+  [  76] obj=168.81     act=534      err= 0.41%/ 0.42% time=0.01s/1.10s
+  [  77] obj=168.59     act=533      err= 0.41%/ 0.42% time=0.02s/1.11s
+  [  78] obj=168.43     act=525      err= 0.41%/ 0.42% time=0.02s/1.13s
+  [  79] obj=168.36     act=517      err= 0.41%/ 0.42% time=0.01s/1.14s
+  [  80] obj=168.22     act=535      err= 0.41%/ 0.42% time=0.01s/1.14s
+* Save the model
+* Done
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+09:43:05.319 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 34814)
+Labeling took: 24 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.91        100          99.89        99.95  
+<pow>                100          100          100          100    
+<prefix>             99.91        99.32        100          99.66  
+
+all fields           99.94        99.91        99.91        99.91   (micro average)
+                     99.94        99.77        99.96        99.87   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.7         99.81        99.81        99.81  
+<pow>                100          100          100          100    
+<prefix>             99.85        99.32        100          99.66  
+
+all fields           99.85        99.7         99.85        99.78   (micro average)
+                     99.85        99.71        99.94        99.82   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   522
+Correct instances:          521
+Instance-level recall:      99.81
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 1559 ms
+
+BUILD SUCCESSFUL in 3s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:43:06.783 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:43:06.794 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:43:06.794 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:43:06.795 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:43:06.795 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:43:06.795 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:43:06.795 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:43:06.804 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:43:06.807 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:43:06.811 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:43:06.811 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:43:06.811 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:43:06.812 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:43:06.814 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:43:06.814 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:43:06.814 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:43:06.814 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:43:06.815 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:43:07.251 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:43:07.251 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:43:07.927 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:43:07.928 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units3886630670107624112.train
+09:43:07.928 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units7286728237748575462.test
+09:43:07.928 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:43:07.928 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:43:07.941 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:43:07.955 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:43:07.959 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:43:07.965 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:43:07.976 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:43:07.982 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:43:07.986 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:43:07.990 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:43:08.004 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:43:08.007 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:43:08.009 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:43:08.012 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:43:08.015 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:43:08.016 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:43:08.026 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:43:08.027 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:43:08.030 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:43:08.033 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:43:08.033 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:43:08.034 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:43:08.034 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:43:08.035 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:43:08.036 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:43:08.037 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:43:08.039 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:43:08.040 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:43:08.049 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:43:08.055 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:43:08.058 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:43:08.061 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:43:08.061 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:43:08.067 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:43:08.070 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:43:08.070 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:43:08.071 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:43:08.072 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:43:08.075 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1575
+    nb labels:   7
+    nb blocks:   1211
+    nb features: 8477
+* Train the model with l-bfgs
+  [   1] obj=2724.61    act=5040     err=35.88%/54.98% time=0.03s/0.03s
+  [   2] obj=2033.33    act=5056     err=28.90%/24.32% time=0.01s/0.03s
+  [   3] obj=1688.91    act=4880     err=17.76%/17.97% time=0.02s/0.05s
+  [   4] obj=1302.56    act=4590     err=11.82%/ 8.95% time=0.01s/0.06s
+  [   5] obj=854.80     act=4038     err= 5.85%/ 8.25% time=0.01s/0.07s
+  [   6] obj=669.26     act=3904     err= 5.37%/ 6.41% time=0.01s/0.09s
+  [   7] obj=557.12     act=3798     err= 5.01%/ 5.71% time=0.01s/0.10s
+  [   8] obj=458.96     act=3607     err= 2.63%/ 3.43% time=0.02s/0.11s
+  [   9] obj=411.13     act=3459     err= 1.64%/ 1.97% time=0.01s/0.12s
+  [  10] obj=375.38     act=3390     err= 1.46%/ 1.84% time=0.01s/0.13s
+  [  11] obj=337.95     act=3243     err= 1.46%/ 1.84% time=0.02s/0.14s
+  [  12] obj=280.60     act=2866     err= 0.99%/ 1.14% time=0.01s/0.15s
+  [  13] obj=250.52     act=2721     err= 0.90%/ 1.08% time=0.02s/0.17s
+  [  14] obj=232.18     act=2616     err= 0.63%/ 0.76% time=0.01s/0.18s
+  [  15] obj=224.16     act=2559     err= 0.57%/ 0.83% time=0.01s/0.19s
+  [  16] obj=216.43     act=2431     err= 0.48%/ 0.70% time=0.02s/0.20s
+  [  17] obj=214.76     act=2111     err= 0.36%/ 0.44% time=0.01s/0.21s
+  [  18] obj=200.83     act=2109     err= 0.39%/ 0.51% time=0.02s/0.23s
+  [  19] obj=197.96     act=2053     err= 0.39%/ 0.51% time=0.01s/0.24s
+  [  20] obj=193.42     act=1951     err= 0.36%/ 0.44% time=0.01s/0.25s
+  [  21] obj=188.29     act=1774     err= 0.36%/ 0.44% time=0.02s/0.26s
+  [  22] obj=181.10     act=1561     err= 0.36%/ 0.44% time=0.01s/0.27s
+  [  23] obj=175.80     act=1356     err= 0.33%/ 0.38% time=0.01s/0.28s
+  [  24] obj=170.99     act=1279     err= 0.33%/ 0.38% time=0.02s/0.30s
+  [  25] obj=167.59     act=1200     err= 0.30%/ 0.32% time=0.01s/0.31s
+  [  26] obj=165.45     act=1090     err= 0.30%/ 0.32% time=0.02s/0.32s
+  [  27] obj=163.09     act=991      err= 0.30%/ 0.32% time=0.01s/0.34s
+  [  28] obj=161.70     act=975      err= 0.30%/ 0.32% time=0.01s/0.34s
+  [  29] obj=160.14     act=943      err= 0.30%/ 0.32% time=0.02s/0.36s
+  [  30] obj=158.29     act=859      err= 0.30%/ 0.32% time=0.01s/0.37s
+  [  31] obj=156.98     act=845      err= 0.33%/ 0.38% time=0.02s/0.39s
+  [  32] obj=155.88     act=834      err= 0.33%/ 0.38% time=0.01s/0.40s
+  [  33] obj=154.73     act=755      err= 0.30%/ 0.38% time=0.01s/0.42s
+  [  34] obj=153.67     act=740      err= 0.33%/ 0.44% time=0.02s/0.43s
+  [  35] obj=152.69     act=704      err= 0.33%/ 0.44% time=0.01s/0.44s
+  [  36] obj=152.00     act=696      err= 0.33%/ 0.44% time=0.02s/0.46s
+  [  37] obj=151.44     act=674      err= 0.33%/ 0.44% time=0.01s/0.47s
+  [  38] obj=150.76     act=682      err= 0.33%/ 0.38% time=0.02s/0.48s
+  [  39] obj=150.32     act=670      err= 0.36%/ 0.44% time=0.01s/0.49s
+  [  40] obj=149.88     act=664      err= 0.33%/ 0.38% time=0.01s/0.50s
+  [  41] obj=149.50     act=650      err= 0.33%/ 0.38% time=0.02s/0.52s
+  [  42] obj=149.20     act=634      err= 0.33%/ 0.38% time=0.01s/0.53s
+  [  43] obj=148.79     act=614      err= 0.33%/ 0.38% time=0.01s/0.54s
+  [  44] obj=148.37     act=609      err= 0.30%/ 0.38% time=0.01s/0.55s
+  [  45] obj=148.11     act=606      err= 0.33%/ 0.38% time=0.01s/0.56s
+  [  46] obj=147.70     act=598      err= 0.33%/ 0.38% time=0.02s/0.58s
+  [  47] obj=147.51     act=588      err= 0.33%/ 0.38% time=0.01s/0.59s
+  [  48] obj=147.24     act=558      err= 0.33%/ 0.38% time=0.03s/0.61s
+  [  49] obj=147.01     act=537      err= 0.33%/ 0.38% time=0.03s/0.64s
+  [  50] obj=146.68     act=535      err= 0.30%/ 0.32% time=0.03s/0.68s
+  [  51] obj=146.45     act=529      err= 0.30%/ 0.32% time=0.04s/0.72s
+  [  52] obj=146.15     act=534      err= 0.27%/ 0.32% time=0.04s/0.76s
+  [  53] obj=145.97     act=502      err= 0.30%/ 0.32% time=0.04s/0.79s
+  [  54] obj=145.69     act=498      err= 0.27%/ 0.32% time=0.05s/0.84s
+  [  55] obj=145.55     act=510      err= 0.27%/ 0.32% time=0.04s/0.88s
+  [  56] obj=145.36     act=503      err= 0.27%/ 0.32% time=0.04s/0.92s
+  [  57] obj=145.13     act=489      err= 0.30%/ 0.32% time=0.05s/0.96s
+  [  58] obj=145.05     act=480      err= 0.27%/ 0.32% time=0.04s/1.00s
+  [  59] obj=144.77     act=473      err= 0.30%/ 0.32% time=0.04s/1.04s
+  [  60] obj=144.76     act=452      err= 0.30%/ 0.32% time=0.05s/1.09s
+  [  61] obj=144.53     act=465      err= 0.30%/ 0.32% time=0.03s/1.12s
+  [  62] obj=144.49     act=452      err= 0.30%/ 0.32% time=0.04s/1.17s
+  [  63] obj=144.32     act=459      err= 0.33%/ 0.38% time=0.04s/1.21s
+  [  64] obj=144.18     act=443      err= 0.30%/ 0.32% time=0.04s/1.25s
+  [  65] obj=143.98     act=444      err= 0.33%/ 0.38% time=0.05s/1.29s
+  [  66] obj=143.83     act=438      err= 0.30%/ 0.32% time=0.03s/1.32s
+  [  67] obj=143.70     act=439      err= 0.33%/ 0.38% time=0.05s/1.38s
+  [  68] obj=143.58     act=427      err= 0.30%/ 0.32% time=0.03s/1.41s
+  [  69] obj=143.55     act=423      err= 0.33%/ 0.38% time=0.03s/1.44s
+  [  70] obj=143.41     act=427      err= 0.27%/ 0.32% time=0.03s/1.47s
+  [  71] obj=143.40     act=427      err= 0.33%/ 0.38% time=0.02s/1.49s
+  [  72] obj=143.24     act=415      err= 0.27%/ 0.32% time=0.02s/1.51s
+  [  73] obj=143.18     act=442      err= 0.33%/ 0.38% time=0.02s/1.53s
+  [  74] obj=143.05     act=414      err= 0.30%/ 0.32% time=0.01s/1.53s
+  [  75] obj=143.00     act=430      err= 0.30%/ 0.32% time=0.03s/1.56s
+  [  76] obj=142.92     act=404      err= 0.30%/ 0.32% time=0.01s/1.57s
+  [  77] obj=142.89     act=405      err= 0.30%/ 0.32% time=0.02s/1.59s
+  [  78] obj=142.84     act=400      err= 0.27%/ 0.32% time=0.01s/1.61s
+  [  79] obj=142.80     act=422      err= 0.30%/ 0.32% time=0.02s/1.63s
+  [  80] obj=142.74     act=396      err= 0.27%/ 0.32% time=0.02s/1.64s
+  [  81] obj=142.70     act=415      err= 0.27%/ 0.32% time=0.02s/1.66s
+  [  82] obj=142.62     act=391      err= 0.27%/ 0.32% time=0.01s/1.67s
+  [  83] obj=142.59     act=395      err= 0.27%/ 0.32% time=0.01s/1.68s
+  [  84] obj=142.53     act=384      err= 0.27%/ 0.32% time=0.02s/1.70s
+  [  85] obj=142.49     act=390      err= 0.30%/ 0.32% time=0.01s/1.71s
+  [  86] obj=142.42     act=386      err= 0.27%/ 0.32% time=0.02s/1.73s
+  [  87] obj=142.40     act=388      err= 0.30%/ 0.32% time=0.01s/1.74s
+  [  88] obj=142.33     act=384      err= 0.30%/ 0.32% time=0.02s/1.75s
+  [  89] obj=142.31     act=386      err= 0.30%/ 0.32% time=0.01s/1.77s
+  [  90] obj=142.24     act=382      err= 0.30%/ 0.32% time=0.01s/1.77s
+  [  91] obj=142.21     act=381      err= 0.30%/ 0.32% time=0.02s/1.79s
+  [  92] obj=142.14     act=376      err= 0.30%/ 0.32% time=0.01s/1.80s
+  [  93] obj=142.11     act=376      err= 0.30%/ 0.32% time=0.01s/1.81s
+  [  94] obj=142.07     act=371      err= 0.30%/ 0.32% time=0.05s/1.86s
+  [  95] obj=142.04     act=369      err= 0.30%/ 0.32% time=0.04s/1.90s
+  [  96] obj=142.02     act=356      err= 0.30%/ 0.32% time=0.04s/1.94s
+  [  97] obj=141.98     act=356      err= 0.30%/ 0.32% time=0.03s/1.98s
+  [  98] obj=141.95     act=351      err= 0.30%/ 0.32% time=0.02s/1.99s
+  [  99] obj=141.93     act=352      err= 0.30%/ 0.32% time=0.02s/2.02s
+  [ 100] obj=141.89     act=350      err= 0.30%/ 0.32% time=0.01s/2.03s
+  [ 101] obj=141.89     act=350      err= 0.30%/ 0.32% time=0.01s/2.04s
+  [ 102] obj=141.84     act=346      err= 0.30%/ 0.32% time=0.01s/2.06s
+  [ 103] obj=141.82     act=346      err= 0.30%/ 0.32% time=0.01s/2.06s
+  [ 104] obj=141.78     act=347      err= 0.30%/ 0.32% time=0.02s/2.08s
+  [ 105] obj=141.76     act=347      err= 0.30%/ 0.32% time=0.01s/2.09s
+  [ 106] obj=141.73     act=349      err= 0.30%/ 0.32% time=0.01s/2.10s
+* Save the model
+* Done
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+09:43:10.227 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 25226)
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 10 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               88.6         86.24        97.58        91.56  
+<pow>                95.39        85.71        38.71        53.33  
+<prefix>             96.93        90.32        87.5         88.89  
+
+all fields           93.64        86.85        91.15        88.95   (micro average)
+                     93.64        87.43        74.6         77.93   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               81.33        82.82        82.82        82.82  
+<pow>                92.67        71.43        35.71        47.62  
+<prefix>             95.33        90.32        87.5         88.89  
+
+all fields           89.78        84.1         78.82        81.38   (micro average)
+                     89.78        81.52        68.68        73.11   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   141
+Correct instances:          118
+Instance-level recall:      83.69
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 2321 ms
+
+BUILD SUCCESSFUL in 4s
+3 actionable tasks: 1 executed, 2 up-to-date
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:61)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:41)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+
+> Task :train_units
+09:43:11.196 [main] DEBUG org.grobid.core.utilities.GrobidProperties - synchronized getNewInstance
+09:43:11.202 [main] WARN org.grobid.core.main.GrobidHomeFinder - No Grobid property was provided. Attempting to find Grobid home in the current directory...
+09:43:11.202 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:43:11.202 [main] WARN org.grobid.core.main.GrobidHomeFinder - *** USING GROBID HOME: /data/workspace/services/grobid/grobid-quantities/../grobid-home
+09:43:11.202 [main] WARN org.grobid.core.main.GrobidHomeFinder - ***************************************************************
+09:43:11.202 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading grobid.properties
+09:43:11.202 [main] WARN org.grobid.core.main.GrobidHomeFinder - Grobid property file location was not explicitly set via 'org.grobid.property' system variable, defaulting to: /data/workspace/services/grobid/grobid-quantities/../grobid-home/config/grobid.properties
+09:43:11.206 [main] DEBUG org.grobid.core.utilities.GrobidProperties - loading pdf to xml command path
+09:43:11.209 [main] DEBUG org.grobid.core.utilities.GrobidProperties - pdf to xml executable home directory set to /data/workspace/services/grobid/grobid-home/pdf2xml/lin-64
+09:43:11.213 [main] INFO org.grobid.core.main.LibraryLoader - Loading external native sequence labelling library
+09:43:11.213 [main] DEBUG org.grobid.core.main.LibraryLoader - /data/workspace/services/grobid/grobid-home/lib/lin-64
+09:43:11.214 [main] INFO org.grobid.core.main.LibraryLoader - Loading Wapiti native library...
+09:43:11.214 [main] INFO org.grobid.core.main.LibraryLoader - Native library for sequence labelling loaded
+09:43:11.215 [main] DEBUG org.grobid.core.lexicon.Lexicon - Get new instance of Lexicon
+09:43:11.215 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating dictionary
+09:43:11.216 [main] INFO org.grobid.core.lexicon.Lexicon - End of Initialization of dictionary
+09:43:11.216 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating names
+09:43:11.216 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of names
+09:43:11.676 [main] INFO org.grobid.core.lexicon.Lexicon - Initiating country codes
+09:43:11.678 [main] INFO org.grobid.core.lexicon.Lexicon - End of initialization of country codes
+09:43:12.530 [main] INFO org.grobid.trainer.UnitTrainer - sourcePathLabel: resources/dataset/units/corpus
+09:43:12.530 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for training data: /data/workspace/services/grobid/grobid-home/tmp/units6226235152735257756.train
+09:43:12.530 [main] INFO org.grobid.trainer.UnitTrainer - outputPath for evaluation data: /data/workspace/services/grobid/grobid-home/tmp/units2559166553998492922.test
+09:43:12.531 [main] INFO org.grobid.trainer.UnitTrainer - 38 files
+09:43:12.532 [main] INFO org.grobid.trainer.UnitTrainer - 1001.4731.units.training.tei.xml
+09:43:12.559 [main] INFO org.grobid.trainer.UnitTrainer - 12970_2015_Article_108.units.training.tei.xml
+09:43:12.570 [main] INFO org.grobid.trainer.UnitTrainer - 1308.2125.units.training.tei.xml
+09:43:12.572 [main] INFO org.grobid.trainer.UnitTrainer - 1404.4640.units.training.tei.xml
+09:43:12.578 [main] INFO org.grobid.trainer.UnitTrainer - 1404.7168.units.training.tei.xml
+09:43:12.592 [main] INFO org.grobid.trainer.UnitTrainer - 1408.2792.units.training.tei.xml
+09:43:12.599 [main] INFO org.grobid.trainer.UnitTrainer - 1412.2117.units.training.tei.xml
+09:43:12.610 [main] INFO org.grobid.trainer.UnitTrainer - 1609.04957.units.training.tei.xml
+09:43:12.615 [main] INFO org.grobid.trainer.UnitTrainer - EP-0505085-B2.units.training.tei.xml
+09:43:12.632 [main] INFO org.grobid.trainer.UnitTrainer - hal-00082280.units.training.tei.xml
+09:43:12.633 [main] INFO org.grobid.trainer.UnitTrainer - hal-00398330.units.training.tei.xml
+09:43:12.635 [main] INFO org.grobid.trainer.UnitTrainer - hal-00535466.units.training.tei.xml
+09:43:12.638 [main] INFO org.grobid.trainer.UnitTrainer - hal-00595947.units.training.tei.xml
+09:43:12.647 [main] INFO org.grobid.trainer.UnitTrainer - hal-00643787.units.training.tei.xml
+09:43:12.649 [main] INFO org.grobid.trainer.UnitTrainer - hal-00720564.units.training.tei.xml
+09:43:12.665 [main] INFO org.grobid.trainer.UnitTrainer - hal-00915599.units.training.tei.xml
+09:43:12.666 [main] INFO org.grobid.trainer.UnitTrainer - hal-00924047.units.training.tei.xml
+09:43:12.669 [main] INFO org.grobid.trainer.UnitTrainer - hal-00962359.units.training.tei.xml
+09:43:12.678 [main] INFO org.grobid.trainer.UnitTrainer - hal-00987664.units.training.tei.xml
+09:43:12.679 [main] INFO org.grobid.trainer.UnitTrainer - hal-01078051.units.training.tei.xml
+09:43:12.680 [main] INFO org.grobid.trainer.UnitTrainer - hal-01205501.units.training.tei.xml
+09:43:12.680 [main] INFO org.grobid.trainer.UnitTrainer - hal-01223150.units.training.tei.xml
+09:43:12.688 [main] INFO org.grobid.trainer.UnitTrainer - hal-01252076.units.training.tei.xml
+09:43:12.689 [main] INFO org.grobid.trainer.UnitTrainer - hal-01269917.units.training.tei.xml
+09:43:12.690 [main] INFO org.grobid.trainer.UnitTrainer - hal-01278907.units.training.tei.xml
+09:43:12.694 [main] INFO org.grobid.trainer.UnitTrainer - hal-01321536.units.training.tei.xml
+09:43:12.696 [main] INFO org.grobid.trainer.UnitTrainer - hal-01429870-CC-BY.units.training.tei.xml
+09:43:12.700 [main] INFO org.grobid.trainer.UnitTrainer - halshs-01279855.units.training.tei.xml
+09:43:12.702 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00508113.units.training.tei.xml
+09:43:12.710 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00676663.units.training.tei.xml
+09:43:12.714 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00721680.units.training.tei.xml
+09:43:12.726 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00752141.units.training.tei.xml
+09:43:12.732 [main] INFO org.grobid.trainer.UnitTrainer - inserm-00851058.units.training.tei.xml
+09:43:12.736 [main] INFO org.grobid.trainer.UnitTrainer - inserm-01196815.units.training.tei.xml
+09:43:12.739 [main] INFO org.grobid.trainer.UnitTrainer - jpa-00251546.units.training.tei.xml
+09:43:12.740 [main] INFO org.grobid.trainer.UnitTrainer - nhess-6-1007-2006.units.training.tei.xml
+09:43:12.743 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata0.training.tei.xml
+09:43:12.749 [main] INFO org.grobid.trainer.UnitTrainer - trainingdata1.training.tei.xml
+	epsilon: 1.0E-7
+	window: 20
+	nb max iterations: 2000
+	nb threads: 12
+* Load patterns
+* Load training data
+   1000 sequences loaded
+* Initialize the model
+* Summary
+    nb train:    1535
+    nb labels:   7
+    nb blocks:   1568
+    nb features: 10976
+* Train the model with l-bfgs
+  [   1] obj=2633.70    act=5627     err=35.53%/55.05% time=0.03s/0.03s
+  [   2] obj=2024.28    act=5776     err=28.18%/23.13% time=0.01s/0.03s
+  [   3] obj=1722.80    act=5646     err=17.87%/17.72% time=0.02s/0.05s
+  [   4] obj=1420.18    act=5326     err=13.03%/ 8.73% time=0.01s/0.06s
+  [   5] obj=1052.15    act=4754     err=10.07%/ 9.84% time=0.02s/0.08s
+  [   6] obj=797.24     act=4649     err= 6.89%/ 7.62% time=0.01s/0.09s
+  [   7] obj=635.64     act=4542     err= 4.81%/ 5.28% time=0.01s/0.09s
+  [   8] obj=517.88     act=4357     err= 3.45%/ 3.39% time=0.02s/0.11s
+  [   9] obj=457.60     act=4255     err= 2.84%/ 2.80% time=0.01s/0.12s
+  [  10] obj=401.79     act=4087     err= 2.36%/ 2.80% time=0.02s/0.14s
+  [  11] obj=353.66     act=3929     err= 1.84%/ 2.28% time=0.01s/0.15s
+  [  12] obj=317.39     act=3703     err= 1.42%/ 2.28% time=0.01s/0.15s
+  [  13] obj=291.06     act=3575     err= 1.39%/ 2.15% time=0.02s/0.17s
+  [  14] obj=270.50     act=3465     err= 1.09%/ 1.76% time=0.01s/0.18s
+  [  15] obj=260.75     act=3384     err= 1.06%/ 1.63% time=0.02s/0.20s
+  [  16] obj=249.99     act=3201     err= 0.94%/ 1.56% time=0.01s/0.21s
+  [  17] obj=245.86     act=2853     err= 0.76%/ 1.04% time=0.01s/0.21s
+  [  18] obj=232.61     act=2837     err= 0.60%/ 0.91% time=0.02s/0.24s
+  [  19] obj=228.03     act=2763     err= 0.60%/ 0.91% time=0.01s/0.24s
+  [  20] obj=219.25     act=2548     err= 0.51%/ 0.72% time=0.02s/0.26s
+  [  21] obj=209.47     act=2258     err= 0.36%/ 0.46% time=0.01s/0.27s
+  [  22] obj=201.67     act=1965     err= 0.30%/ 0.39% time=0.02s/0.28s
+  [  23] obj=195.43     act=1751     err= 0.33%/ 0.39% time=0.01s/0.30s
+  [  24] obj=190.82     act=1529     err= 0.33%/ 0.46% time=0.02s/0.31s
+  [  25] obj=187.66     act=1430     err= 0.27%/ 0.33% time=0.01s/0.32s
+  [  26] obj=184.93     act=1392     err= 0.24%/ 0.26% time=0.01s/0.33s
+  [  27] obj=182.93     act=1282     err= 0.24%/ 0.26% time=0.02s/0.35s
+  [  28] obj=180.56     act=1157     err= 0.27%/ 0.33% time=0.01s/0.36s
+  [  29] obj=178.41     act=1075     err= 0.21%/ 0.20% time=0.02s/0.37s
+  [  30] obj=177.31     act=1064     err= 0.24%/ 0.26% time=0.01s/0.38s
+  [  31] obj=175.98     act=992      err= 0.21%/ 0.20% time=0.01s/0.39s
+  [  32] obj=174.80     act=965      err= 0.27%/ 0.33% time=0.02s/0.41s
+  [  33] obj=173.93     act=973      err= 0.27%/ 0.33% time=0.01s/0.42s
+  [  34] obj=173.16     act=956      err= 0.27%/ 0.33% time=0.02s/0.43s
+  [  35] obj=172.42     act=892      err= 0.27%/ 0.33% time=0.01s/0.44s
+  [  36] obj=171.74     act=861      err= 0.27%/ 0.33% time=0.02s/0.46s
+  [  37] obj=171.24     act=837      err= 0.24%/ 0.26% time=0.01s/0.47s
+  [  38] obj=170.73     act=809      err= 0.24%/ 0.26% time=0.01s/0.48s
+  [  39] obj=170.25     act=791      err= 0.24%/ 0.26% time=0.02s/0.50s
+  [  40] obj=169.52     act=753      err= 0.24%/ 0.26% time=0.01s/0.51s
+  [  41] obj=168.99     act=760      err= 0.24%/ 0.26% time=0.02s/0.52s
+  [  42] obj=168.52     act=733      err= 0.21%/ 0.20% time=0.01s/0.53s
+  [  43] obj=168.22     act=734      err= 0.21%/ 0.20% time=0.02s/0.55s
+  [  44] obj=167.87     act=709      err= 0.21%/ 0.20% time=0.01s/0.56s
+  [  45] obj=167.16     act=633      err= 0.24%/ 0.26% time=0.01s/0.57s
+  [  46] obj=166.86     act=677      err= 0.24%/ 0.26% time=0.02s/0.58s
+  [  47] obj=166.52     act=693      err= 0.24%/ 0.26% time=0.01s/0.59s
+  [  48] obj=166.17     act=671      err= 0.24%/ 0.26% time=0.02s/0.61s
+  [  49] obj=165.75     act=669      err= 0.21%/ 0.20% time=0.01s/0.62s
+  [  50] obj=165.35     act=635      err= 0.24%/ 0.26% time=0.02s/0.65s
+  [  51] obj=164.98     act=640      err= 0.24%/ 0.26% time=0.02s/0.67s
+  [  52] obj=164.69     act=628      err= 0.21%/ 0.20% time=0.01s/0.68s
+  [  53] obj=164.43     act=634      err= 0.24%/ 0.26% time=0.02s/0.71s
+  [  54] obj=164.38     act=616      err= 0.24%/ 0.26% time=0.01s/0.72s
+  [  55] obj=163.91     act=611      err= 0.24%/ 0.26% time=0.02s/0.73s
+  [  56] obj=163.67     act=607      err= 0.21%/ 0.20% time=0.01s/0.74s
+  [  57] obj=163.45     act=593      err= 0.24%/ 0.26% time=0.02s/0.76s
+  [  58] obj=163.24     act=586      err= 0.21%/ 0.20% time=0.01s/0.77s
+  [  59] obj=163.12     act=571      err= 0.24%/ 0.26% time=0.01s/0.78s
+  [  60] obj=162.78     act=579      err= 0.24%/ 0.26% time=0.02s/0.80s
+  [  61] obj=162.74     act=572      err= 0.24%/ 0.26% time=0.01s/0.80s
+  [  62] obj=162.49     act=581      err= 0.24%/ 0.26% time=0.02s/0.82s
+  [  63] obj=162.29     act=573      err= 0.24%/ 0.26% time=0.01s/0.83s
+  [  64] obj=162.28     act=575      err= 0.24%/ 0.26% time=0.03s/0.86s
+  [  65] obj=161.93     act=599      err= 0.24%/ 0.26% time=0.02s/0.88s
+  [  66] obj=161.88     act=572      err= 0.24%/ 0.26% time=0.01s/0.89s
+  [  67] obj=161.69     act=576      err= 0.27%/ 0.26% time=0.02s/0.92s
+  [  68] obj=161.62     act=570      err= 0.24%/ 0.26% time=0.03s/0.94s
+  [  69] obj=161.56     act=549      err= 0.27%/ 0.26% time=0.01s/0.95s
+  [  70] obj=161.38     act=550      err= 0.24%/ 0.26% time=0.02s/0.97s
+  [  71] obj=161.29     act=531      err= 0.24%/ 0.26% time=0.01s/0.98s
+  [  72] obj=161.22     act=533      err= 0.24%/ 0.26% time=0.02s/0.99s
+  [  73] obj=161.06     act=545      err= 0.21%/ 0.20% time=0.01s/1.00s
+  [  74] obj=161.01     act=532      err= 0.21%/ 0.20% time=0.02s/1.02s
+  [  75] obj=160.83     act=543      err= 0.21%/ 0.20% time=0.01s/1.03s
+  [  76] obj=160.68     act=524      err= 0.21%/ 0.20% time=0.01s/1.04s
+  [  77] obj=160.56     act=512      err= 0.21%/ 0.20% time=0.02s/1.06s
+  [  78] obj=160.43     act=516      err= 0.21%/ 0.20% time=0.01s/1.07s
+  [  79] obj=160.38     act=499      err= 0.24%/ 0.26% time=0.02s/1.08s
+  [  80] obj=160.21     act=501      err= 0.21%/ 0.20% time=0.01s/1.09s
+  [  81] obj=160.12     act=496      err= 0.24%/ 0.26% time=0.02s/1.11s
+  [  82] obj=160.02     act=501      err= 0.21%/ 0.20% time=0.01s/1.13s
+  [  83] obj=159.91     act=488      err= 0.24%/ 0.26% time=0.02s/1.14s
+  [  84] obj=159.80     act=506      err= 0.24%/ 0.26% time=0.01s/1.16s
+  [  85] obj=159.76     act=493      err= 0.24%/ 0.26% time=0.02s/1.18s
+  [  86] obj=159.66     act=491      err= 0.24%/ 0.26% time=0.02s/1.20s
+  [  87] obj=159.59     act=482      err= 0.24%/ 0.26% time=0.02s/1.22s
+  [  88] obj=159.50     act=472      err= 0.24%/ 0.26% time=0.05s/1.27s
+  [  89] obj=159.43     act=468      err= 0.24%/ 0.26% time=0.06s/1.33s
+  [  90] obj=159.37     act=464      err= 0.21%/ 0.20% time=0.06s/1.40s
+  [  91] obj=159.31     act=459      err= 0.24%/ 0.26% time=0.06s/1.46s
+  [  92] obj=159.24     act=437      err= 0.21%/ 0.20% time=0.06s/1.52s
+  [  93] obj=159.20     act=429      err= 0.24%/ 0.26% time=0.06s/1.58s
+  [  94] obj=159.15     act=422      err= 0.21%/ 0.20% time=0.08s/1.66s
+  [  95] obj=159.11     act=423      err= 0.24%/ 0.26% time=0.07s/1.73s
+  [  96] obj=159.05     act=416      err= 0.21%/ 0.20% time=0.06s/1.79s
+  [  97] obj=159.00     act=418      err= 0.24%/ 0.26% time=0.08s/1.86s
+  [  98] obj=158.96     act=418      err= 0.21%/ 0.20% time=0.05s/1.91s
+  [  99] obj=158.90     act=416      err= 0.24%/ 0.26% time=0.06s/1.97s
+  [ 100] obj=158.86     act=415      err= 0.21%/ 0.20% time=0.06s/2.03s
+  [ 101] obj=158.82     act=418      err= 0.24%/ 0.26% time=0.05s/2.08s
+  [ 102] obj=158.77     act=412      err= 0.21%/ 0.20% time=0.04s/2.12s
+  [ 103] obj=158.73     act=414      err= 0.24%/ 0.26% time=0.03s/2.15s
+  [ 104] obj=158.71     act=408      err= 0.24%/ 0.26% time=0.03s/2.18s
+  [ 105] obj=158.69     act=409      err= 0.24%/ 0.26% time=0.01s/2.19s
+  [ 106] obj=158.57     act=408      err= 0.21%/ 0.20% time=0.02s/2.21s
+  [ 107] obj=158.50     act=402      err= 0.24%/ 0.26% time=0.03s/2.24s
+  [ 108] obj=158.49     act=402      err= 0.21%/ 0.20% time=0.01s/2.25s
+  [ 109] obj=158.28     act=421      err= 0.24%/ 0.26% time=0.04s/2.29s
+  [ 110] obj=158.24     act=432      err= 0.21%/ 0.20% time=0.04s/2.32s
+  [ 111] obj=158.21     act=414      err= 0.24%/ 0.26% time=0.03s/2.36s
+  [ 112] obj=158.18     act=428      err= 0.24%/ 0.26% time=0.04s/2.39s
+  [ 113] obj=158.14     act=408      err= 0.24%/ 0.26% time=0.01s/2.41s
+  [ 114] obj=158.10     act=405      err= 0.24%/ 0.26% time=0.02s/2.43s
+  [ 115] obj=158.06     act=393      err= 0.24%/ 0.26% time=0.02s/2.45s
+  [ 116] obj=158.03     act=381      err= 0.24%/ 0.26% time=0.01s/2.46s
+  [ 117] obj=158.00     act=364      err= 0.24%/ 0.26% time=0.04s/2.50s
+  [ 118] obj=157.96     act=364      err= 0.24%/ 0.26% time=0.07s/2.57s
+  [ 119] obj=157.94     act=356      err= 0.24%/ 0.26% time=0.06s/2.63s
+  [ 120] obj=157.90     act=363      err= 0.24%/ 0.26% time=0.03s/2.66s
+  [ 121] obj=157.88     act=358      err= 0.24%/ 0.26% time=0.03s/2.69s
+  [ 122] obj=157.84     act=358      err= 0.24%/ 0.26% time=0.02s/2.71s
+  [ 123] obj=157.82     act=352      err= 0.24%/ 0.26% time=0.02s/2.73s
+  [ 124] obj=157.82     act=351      err= 0.21%/ 0.20% time=0.01s/2.74s
+  [ 125] obj=157.80     act=349      err= 0.24%/ 0.26% time=0.02s/2.76s
+  [ 126] obj=157.69     act=360      err= 0.21%/ 0.20% time=0.01s/2.76s
+  [ 127] obj=157.66     act=355      err= 0.24%/ 0.26% time=0.02s/2.78s
+  [ 128] obj=157.62     act=364      err= 0.21%/ 0.20% time=0.01s/2.79s
+  [ 129] obj=157.60     act=365      err= 0.24%/ 0.26% time=0.01s/2.80s
+  [ 130] obj=157.58     act=363      err= 0.21%/ 0.20% time=0.02s/2.82s
+  [ 131] obj=157.51     act=367      err= 0.21%/ 0.20% time=0.01s/2.83s
+  [ 132] obj=157.48     act=365      err= 0.21%/ 0.20% time=0.02s/2.84s
+  [ 133] obj=157.45     act=352      err= 0.21%/ 0.20% time=0.01s/2.86s
+  [ 134] obj=157.43     act=363      err= 0.21%/ 0.20% time=0.02s/2.88s
+  [ 135] obj=157.40     act=357      err= 0.24%/ 0.26% time=0.01s/2.89s
+  [ 136] obj=157.35     act=355      err= 0.21%/ 0.20% time=0.03s/2.91s
+  [ 137] obj=157.34     act=351      err= 0.24%/ 0.26% time=0.02s/2.93s
+  [ 138] obj=157.33     act=352      err= 0.21%/ 0.20% time=0.02s/2.95s
+  [ 139] obj=157.25     act=358      err= 0.24%/ 0.26% time=0.01s/2.96s
+  [ 140] obj=157.23     act=352      err= 0.21%/ 0.20% time=0.02s/2.98s
+  [ 141] obj=157.18     act=348      err= 0.24%/ 0.26% time=0.02s/3.00s
+  [ 142] obj=157.17     act=349      err= 0.21%/ 0.20% time=0.01s/3.01s
+  [ 143] obj=157.13     act=348      err= 0.24%/ 0.26% time=0.02s/3.02s
+  [ 144] obj=157.12     act=346      err= 0.21%/ 0.20% time=0.02s/3.04s
+  [ 145] obj=157.08     act=356      err= 0.24%/ 0.26% time=0.01s/3.05s
+  [ 146] obj=157.06     act=344      err= 0.21%/ 0.20% time=0.01s/3.06s
+  [ 147] obj=157.03     act=341      err= 0.24%/ 0.26% time=0.02s/3.08s
+  [ 148] obj=157.01     act=346      err= 0.21%/ 0.20% time=0.02s/3.10s
+  [ 149] obj=156.97     act=343      err= 0.24%/ 0.26% time=0.02s/3.11s
+  [ 150] obj=156.95     act=344      err= 0.21%/ 0.20% time=0.02s/3.13s
+  [ 151] obj=156.92     act=347      err= 0.24%/ 0.26% time=0.01s/3.14s
+  [ 152] obj=156.89     act=346      err= 0.21%/ 0.20% time=0.01s/3.15s
+  [ 153] obj=156.86     act=347      err= 0.24%/ 0.26% time=0.02s/3.16s
+  [ 154] obj=156.84     act=346      err= 0.21%/ 0.20% time=0.02s/3.18s
+  [ 155] obj=156.81     act=348      err= 0.24%/ 0.26% time=0.01s/3.19s
+  [ 156] obj=156.79     act=347      err= 0.21%/ 0.20% time=0.02s/3.21s
+  [ 157] obj=156.77     act=349      err= 0.24%/ 0.26% time=0.02s/3.22s
+  [ 158] obj=156.75     act=344      err= 0.21%/ 0.20% time=0.01s/3.23s
+  [ 159] obj=156.73     act=345      err= 0.24%/ 0.26% time=0.02s/3.25s
+  [ 160] obj=156.71     act=345      err= 0.21%/ 0.20% time=0.02s/3.27s
+  [ 161] obj=156.68     act=346      err= 0.24%/ 0.26% time=0.01s/3.28s
+  [ 162] obj=156.67     act=339      err= 0.21%/ 0.20% time=0.01s/3.29s
+  [ 163] obj=156.64     act=339      err= 0.24%/ 0.26% time=0.02s/3.30s
+  [ 164] obj=156.62     act=335      err= 0.21%/ 0.20% time=0.02s/3.32s
+  [ 165] obj=156.59     act=336      err= 0.24%/ 0.26% time=0.01s/3.33s
+  [ 166] obj=156.58     act=333      err= 0.21%/ 0.20% time=0.02s/3.34s
+  [ 167] obj=156.55     act=333      err= 0.24%/ 0.26% time=0.02s/3.36s
+  [ 168] obj=156.54     act=329      err= 0.21%/ 0.20% time=0.01s/3.37s
+  [ 169] obj=156.51     act=334      err= 0.24%/ 0.26% time=0.02s/3.39s
+  [ 170] obj=156.51     act=332      err= 0.21%/ 0.20% time=0.02s/3.41s
+  [ 171] obj=156.48     act=332      err= 0.24%/ 0.26% time=0.01s/3.42s
+  [ 172] obj=156.47     act=312      err= 0.21%/ 0.20% time=0.02s/3.43s
+  [ 173] obj=156.44     act=313      err= 0.24%/ 0.26% time=0.02s/3.45s
+  [ 174] obj=156.43     act=309      err= 0.21%/ 0.20% time=0.01s/3.46s
+  [ 175] obj=156.41     act=307      err= 0.24%/ 0.26% time=0.01s/3.47s
+  [ 176] obj=156.40     act=311      err= 0.21%/ 0.20% time=0.02s/3.48s
+  [ 177] obj=156.39     act=313      err= 0.24%/ 0.26% time=0.02s/3.50s
+  [ 178] obj=156.38     act=313      err= 0.21%/ 0.20% time=0.01s/3.51s
+  [ 179] obj=156.36     act=299      err= 0.24%/ 0.26% time=0.02s/3.53s
+  [ 180] obj=156.35     act=296      err= 0.21%/ 0.20% time=0.02s/3.54s
+  [ 181] obj=156.33     act=295      err= 0.24%/ 0.26% time=0.01s/3.55s
+  [ 182] obj=156.31     act=294      err= 0.24%/ 0.26% time=0.02s/3.57s
+  [ 183] obj=156.30     act=313      err= 0.24%/ 0.26% time=0.03s/3.60s
+  [ 184] obj=156.29     act=307      err= 0.24%/ 0.26% time=0.01s/3.62s
+  [ 185] obj=156.28     act=322      err= 0.21%/ 0.20% time=0.02s/3.64s
+  [ 186] obj=156.23     act=307      err= 0.24%/ 0.26% time=0.02s/3.66s
+  [ 187] obj=156.23     act=314      err= 0.24%/ 0.26% time=0.02s/3.68s
+  [ 188] obj=156.19     act=299      err= 0.24%/ 0.26% time=0.02s/3.69s
+  [ 189] obj=156.19     act=307      err= 0.24%/ 0.26% time=0.01s/3.70s
+  [ 190] obj=156.16     act=298      err= 0.24%/ 0.26% time=0.01s/3.71s
+  [ 191] obj=156.16     act=296      err= 0.21%/ 0.20% time=0.02s/3.73s
+  [ 192] obj=156.12     act=291      err= 0.24%/ 0.26% time=0.01s/3.74s
+  [ 193] obj=156.11     act=295      err= 0.24%/ 0.26% time=0.02s/3.76s
+  [ 194] obj=156.09     act=294      err= 0.24%/ 0.26% time=0.01s/3.77s
+  [ 195] obj=156.07     act=309      err= 0.24%/ 0.26% time=0.03s/3.80s
+  [ 196] obj=156.06     act=306      err= 0.24%/ 0.26% time=0.03s/3.82s
+  [ 197] obj=156.05     act=305      err= 0.24%/ 0.26% time=0.03s/3.85s
+  [ 198] obj=156.04     act=303      err= 0.24%/ 0.26% time=0.03s/3.88s
+  [ 199] obj=156.02     act=302      err= 0.21%/ 0.20% time=0.01s/3.89s
+  [ 200] obj=156.02     act=302      err= 0.24%/ 0.26% time=0.02s/3.91s
+  [ 201] obj=156.02     act=302      err= 0.21%/ 0.20% time=0.01s/3.92s
+  [ 202] obj=155.99     act=296      err= 0.24%/ 0.26% time=0.02s/3.94s
+  [ 203] obj=155.98     act=292      err= 0.24%/ 0.26% time=0.04s/3.98s
+  [ 204] obj=155.97     act=285      err= 0.24%/ 0.26% time=0.04s/4.02s
+  [ 205] obj=155.93     act=288      err= 0.24%/ 0.26% time=0.04s/4.06s
+  [ 206] obj=155.91     act=296      err= 0.24%/ 0.26% time=0.08s/4.14s
+  [ 207] obj=155.91     act=296      err= 0.24%/ 0.26% time=0.07s/4.21s
+  [ 208] obj=155.89     act=298      err= 0.24%/ 0.26% time=0.08s/4.29s
+  [ 209] obj=155.89     act=297      err= 0.24%/ 0.26% time=0.07s/4.36s
+  [ 210] obj=155.88     act=299      err= 0.24%/ 0.26% time=0.08s/4.45s
+  [ 211] obj=155.87     act=299      err= 0.24%/ 0.26% time=0.06s/4.51s
+  [ 212] obj=155.87     act=295      err= 0.24%/ 0.26% time=0.06s/4.57s
+  [ 213] obj=155.86     act=296      err= 0.24%/ 0.26% time=0.04s/4.61s
+  [ 214] obj=155.85     act=298      err= 0.24%/ 0.26% time=0.07s/4.68s
+  [ 215] obj=155.84     act=295      err= 0.24%/ 0.26% time=0.04s/4.72s
+  [ 216] obj=155.83     act=299      err= 0.24%/ 0.26% time=0.05s/4.77s
+  [ 217] obj=155.82     act=294      err= 0.24%/ 0.26% time=0.04s/4.81s
+  [ 218] obj=155.82     act=293      err= 0.24%/ 0.26% time=0.04s/4.86s
+  [ 219] obj=155.80     act=294      err= 0.24%/ 0.26% time=0.03s/4.88s
+  [ 220] obj=155.80     act=292      err= 0.24%/ 0.26% time=0.02s/4.90s
+  [ 221] obj=155.79     act=290      err= 0.24%/ 0.26% time=0.03s/4.94s
+* Save the model
+* Done
+09:43:17.755 [main] INFO org.grobid.core.jni.WapitiModel - Loading model: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti (size: 28098)
+[Wapiti] Loading model: "/data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti"
+Model path: /data/workspace/services/grobid/grobid-quantities/../grobid-home/models/units/model.wapiti
+Labeling took: 11 ms
+
+===== Token-level results =====
+
+
+label                accuracy     precision    recall       f1     
+
+<base>               99.55        100          99.35        99.68  
+<pow>                100          100          100          100    
+<prefix>             99.55        97.47        100          98.72  
+
+all fields           99.7         99.55        99.55        99.55   (micro average)
+                     99.7         99.16        99.78        99.46   (macro average)
+
+===== Field-level results =====
+
+label                accuracy     precision    recall       f1     
+
+<base>               98.76        99.05        99.05        99.05  
+<pow>                100          100          100          100    
+<prefix>             99.38        97.47        100          98.72  
+
+all fields           99.38        98.75        99.37        99.06   (micro average)
+                     99.38        98.84        99.68        99.26   (macro average)
+
+===== Instance-level results =====
+
+Total expected instances:   181
+Correct instances:          179
+Instance-level recall:      98.9
+
+Split, training and evaluation for org.grobid.core.GrobidModels$1@3b2da18f model is realized in 5255 ms
+
+BUILD SUCCESSFUL in 7s
+3 actionable tasks: 1 executed, 2 up-to-date

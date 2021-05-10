@@ -105,9 +105,24 @@ public class QuantityLexicon {
         unitDefinition.setSystem(system);
         unitDefinition.setType(type);
 
+        JsonNode supportsPrefixes = node.get("supportsPrefixes");
+        if (supportsPrefixes != null) {
+            unitDefinition.setSupportsPrefixes(supportsPrefixes.asBoolean());
+        } else {
+            // Imperial and us customary won't need prefixes
+            if (Arrays.asList(UnitUtilities.System_Type.IMPERIAL, UnitUtilities.System_Type.US)
+                .contains(unitDefinition.getSystem())) {
+                unitDefinition.setSupportsPrefixes(false);
+            } else {
+                unitDefinition.setSupportsPrefixes(true);
+            }
+        }
+
         JsonNode skipNormalisationNode = node.get("skipNormalisation");
-        if(skipNormalisationNode != null) {
+        if (skipNormalisationNode != null) {
             unitDefinition.setSkipNormalisation(skipNormalisationNode.asBoolean());
+        } else {
+            unitDefinition.setSkipNormalisation(false);
         }
 
         String defaultRawNotation = "";
@@ -120,7 +135,9 @@ public class QuantityLexicon {
                 if (isBlank(defaultRawNotation)) {
                     defaultRawNotation = rawNotation;
                 }
-                expandAndAdd(unitDefinition, rawNotation);
+                if (unitDefinition.isSupportsPrefixes()) {
+                    expandAndAdd(unitDefinition, rawNotation);
+                }
             }
         }
 
@@ -372,8 +389,8 @@ public class QuantityLexicon {
 
     public static boolean isComposedUnit(String unitTerm) {
         return unitTerm.contains("/")
-                || unitTerm.contains("*")
-                || unitTerm.contains("·");
+            || unitTerm.contains("*")
+            || unitTerm.contains("·");
     }
 
     public List<RegexValueHolder> decomposeComplexUnit(String unitTerm) {
@@ -431,10 +448,10 @@ public class QuantityLexicon {
 
     /**
      * Lookup the unit name by inflection, for example
-     *   meter -> m
-     *   kilogram -> kg
-     *   picohenry -> pH
-     *   mile per hours -> mile/h
+     * meter -> m
+     * kilogram -> kg
+     * picohenry -> pH
+     * mile per hours -> mile/h
      */
     public String getNameByInflection(String inflection) {
         return inflection2name.get(inflection);
@@ -473,8 +490,8 @@ public class QuantityLexicon {
     /**
      * Return a unit object based on an unit notation.
      * for example:
-     *    getUnitByNotation("cm") would return meter (LENGTH, SI)
-     *    getUnitByNotation("cm3") would return m3 (VOLUME, SI)
+     * getUnitByNotation("cm") would return meter (LENGTH, SI)
+     * getUnitByNotation("cm3") would return m3 (VOLUME, SI)
      */
     public UnitDefinition getUnitByNotation(String notation) {
         if (notation == null) {

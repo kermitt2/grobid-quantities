@@ -49,24 +49,24 @@
 	<unit><base>year</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
 	<unit><base>year</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
     <unit><base>%</base></unit>
-    <unit><base>•</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
+    <unit>•</unit>
     <unit><base>%</base></unit>
 	<unit><base>day</base></unit>
 	<unit><base>months</base></unit>
 	<unit><base>days</base></unit>
 	<unit><base>days</base></unit>
 	<unit><base>degrees</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
 	<unit><base>year</base></unit>
     <unit><base>′</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
 	<unit><base>year</base></unit>
 	<unit><base>year</base></unit>
 	<unit><base>years</base></unit>
@@ -195,13 +195,13 @@
     <unit><prefix>c</prefix><base>m</base></unit>
     <unit><prefix>c</prefix><base>m</base></unit>
 	<unit><base>year</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
 	<unit><base>year</base></unit>
 	<unit><base>year</base></unit>
 	<unit><base>years</base></unit>
 	<unit><base>degrees</base></unit>
     <unit><base>%</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
     <unit><base>K</base></unit>
     <unit><base>K</base></unit>
     <unit><prefix>c</prefix><base>m</base></unit>
@@ -212,7 +212,7 @@
     <unit><prefix>m</prefix><base>m</base></unit>
 	<unit><base>months</base></unit>
 	<unit><base>years</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
     <unit><base>%</base></unit>
 	<unit><base>year</base></unit>
 	<unit><base>year</base></unit>
@@ -325,7 +325,7 @@
     <unit><base>′′</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
 	<unit><base>year</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
     <unit><prefix>m</prefix><base>K</base></unit>
     <unit><base>′</base></unit>
     <unit><base>′</base></unit>
@@ -350,9 +350,9 @@
     <unit><base>Jy</base></unit>
     <unit><base>′</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
-    <unit><base>•</base></unit>
-    <unit><base>•</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
+    <unit>•</unit>
+    <unit>•</unit>
     <unit><base>′′</base></unit>
 	<unit><base>rad</base> <base>m</base> <pow>−2</pow></unit>
 	<unit><base>rad</base> <base>m</base> <pow>−2</pow></unit>
@@ -389,7 +389,7 @@
     <unit><prefix>c</prefix><base>m</base></unit>
     <unit><prefix>c</prefix><base>m</base></unit>
     <unit><prefix>µ</prefix><base>m</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
     <unit><prefix>c</prefix><base>m</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
@@ -439,7 +439,7 @@
     <unit><base>K</base></unit>
     <unit><base>K</base></unit>
     <unit><base>K</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
 	<unit><base>year</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>
     <unit><prefix>G</prefix><base>Hz</base></unit>

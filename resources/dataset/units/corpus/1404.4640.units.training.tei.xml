@@ -29,7 +29,7 @@
 	<unit><base>min</base></unit>
 	<unit><base>days</base></unit>
 	<unit><base>weeks</base></unit>
-	<unit><base>•</base></unit>
+	<unit>•</unit>
 	<unit><base>m</base><pow>/</pow><base>s</base></unit>
 	<unit><base>au</base></unit>
 	<unit><base>au</base></unit>

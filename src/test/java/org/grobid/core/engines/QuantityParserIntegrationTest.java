@@ -85,8 +85,7 @@ public class QuantityParserIntegrationTest {
 
     @Test
     public void testQuantityParsing_composedUnit() throws Exception {
-        List<Measurement> measurements = target.process("the result was 10 m^1*s^-1 ");
-
+        List<Measurement> measurements = target.process("The result was 10 m -1 * s -1.");
 
         assertThat(measurements, hasSize(1));
         Measurement measurement = measurements.get(0);
@@ -294,7 +293,7 @@ public class QuantityParserIntegrationTest {
                 "stage\tstage\ts\tst\tsta\tstag\te\tge\tage\ttage\tNOCAPS\tNODIGIT\t0\tNOPUNCT\txxxx\tx\t0\t0\t<other>\n" +
                 ".\t.\t.\t.\t.\t.\t.\t.\t.\t.\tALLCAPS\tNODIGIT\t1\tDOT\t.\t.\t0\t0\t<other>";
 
-        List<OffsetPosition> sentences = Arrays.asList(new OffsetPosition(0, 61), new OffsetPosition(61, 123));
+//        List<OffsetPosition> sentences = Arrays.asList(new OffsetPosition(0, 61), new OffsetPosition(61, 123));
 //        List<Measurement> measurementList = target.extractMeasurement(tokens, result, sentences);
         List<Measurement> measurementList = target.extractMeasurement(tokens, result);
 

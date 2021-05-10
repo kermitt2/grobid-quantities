@@ -6,14 +6,14 @@
 	<unit><base>millimeter</base></unit>
     <unit><base>grain</base><base>s</base><pow>/</pow><base>m</base> <pow>2</pow></unit>
     <unit><prefix>k</prefix><base>m</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
     <unit><prefix>k</prefix><base>m</base><pow>/</pow><base>s</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
 	<unit><base>minutes</base></unit>
     <unit><prefix>k</prefix><base>m</base></unit>
 	<unit><base>minutes</base></unit>
     <unit><prefix>k</prefix><base>m</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
 	<unit><base>minute</base></unit>
     <unit><base>AU</base></unit>
     <unit><base>m</base><pow>/</pow><base>s</base></unit>
@@ -54,7 +54,7 @@
 	<unit><base>hour</base></unit>
 	<unit><base>hour</base></unit>
     <unit><base>percent</base></unit>
-    <unit><base>•</base></unit>
+    <unit>•</unit>
     <unit><base>m</base> <pow>−2</pow></unit>
     <unit><base>g</base><pow>/</pow><prefix>c</prefix><base>m</base> <pow>3</pow></unit>
     <unit><base>m</base> <pow>−2</pow></unit>

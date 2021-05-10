@@ -2,7 +2,6 @@ package org.grobid.core.utilities;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.grobid.core.data.normalization.NormalizationException;
@@ -130,7 +129,7 @@ public class WordsToNumber {
         return numberTokens;
     }
 
-    public BigDecimal normalize(String text, Locale local) throws NormalizationException{
+    public BigDecimal normalize(String text, Locale local) throws NormalizationException {
         double current = 0; 
         double result = 0;
         text = StringUtils.lowerCase(text);

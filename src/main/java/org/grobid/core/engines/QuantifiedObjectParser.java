@@ -1,9 +1,6 @@
 package org.grobid.core.engines;
 
-import com.google.common.collect.Iterables;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.tuple.Pair;
 import org.grobid.core.GrobidModel;
 import org.grobid.core.analyzers.QuantityAnalyzer;
 import org.grobid.core.data.Measurement;
@@ -26,7 +23,6 @@ import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 import static org.apache.commons.collections4.CollectionUtils.isEmpty;
-import static org.apache.commons.lang3.StringUtils.length;
 import static org.grobid.core.engines.label.QuantitiesTaggingLabels.*;
 import static org.grobid.core.utilities.QuantityOperations.synchroniseLayoutTokensWithOffsets;
 
@@ -228,7 +224,7 @@ public class QuantifiedObjectParser extends AbstractParser {
                 result.append("\n");
             }
         } catch (Exception e) {
-            throw new GrobidException("An exception occured while running Grobid.", e);
+            throw new GrobidException("An exception occurred while running Grobid.", e);
         }
         return result.toString();
     }

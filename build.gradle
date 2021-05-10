@@ -78,14 +78,18 @@ dependencies {
     compile "com.fasterxml.jackson.module:jackson-module-afterburner:2.10.1"
 
     // measurements
-    compile group: 'si.uom', name: 'si-units-java8', version: '0.9'
-    compile group: 'si.uom', name: 'si-quantity', version: '0.9'
-    compile group: 'tec.uom', name: 'uom-se', version: '1.0.9'
-    compile group: 'systems.uom', name: 'systems-ucum-java8', version: '0.9'
-    compile group: 'systems.uom', name: 'systems-unicode-java8', version: '0.9'
-    compile group: 'systems.uom', name: 'systems-quantity', version: '0.9'
-    compile group: 'systems.uom', name: 'systems-common', version: '0.9'
 
+    // (1) UOM 2.0-SNAPSHOT
+    compile 'tech.units:indriya:2.0.1'
+    compile group: 'si.uom', name: 'si-units', version: '2.0.1'
+    compile group: 'si.uom', name: 'si-quantity', version: '2.0.1'
+    compile group: 'systems.uom', name: 'systems-quantity', version: '2.0.2'
+    compile group: 'systems.uom', name: 'systems-common', version: '2.0.2'
+    compile group: 'systems.uom', name: 'systems-unicode', version: '2.0.2'
+    compile group: 'systems.uom', name: 'systems-ucum', version: '2.0.2'
+    compile group: 'systems.uom', name: 'systems-unicode', version: '2.0.2'
+
+    // (2) UOM 1.3
 //    compile 'tech.units:indriya:1.3'
 //    compile group: 'si.uom', name: 'si-units', version: '1.2'
 //    compile group: 'si.uom', name: 'si-quantity', version: '1.2'
@@ -95,15 +99,17 @@ dependencies {
 //    compile group: 'systems.uom', name: 'systems-ucum', version: '1.0'
 //    compile group: 'systems.uom', name: 'systems-ucum-java8', version: '1.0'
 //    compile group: 'systems.uom', name: 'systems-unicode-java8', version: '1.0'
+//    compile group: 'tech.uom', name: 'seshat', version: '1.0'
+
 
     //Dropwizard
-    compile "io.dropwizard:dropwizard-core:1.3.23"
-    compile "io.dropwizard:dropwizard-assets:1.3.23"
+    compile "io.dropwizard:dropwizard-core:1.3.29"
+    compile "io.dropwizard:dropwizard-assets:1.3.29"
     compile "com.hubspot.dropwizard:dropwizard-guicier:1.3.5.2"
-    compile "io.dropwizard:dropwizard-testing:1.3.23"
-    compile "io.dropwizard:dropwizard-forms:1.3.23"
-    compile "io.dropwizard:dropwizard-client:1.3.23"
-    compile "io.dropwizard:dropwizard-auth:1.3.23"
+    compile "io.dropwizard:dropwizard-testing:1.3.29"
+    compile "io.dropwizard:dropwizard-forms:1.3.29"
+    compile "io.dropwizard:dropwizard-client:1.3.29"
+    compile "io.dropwizard:dropwizard-auth:1.3.29"
     compile "io.dropwizard.metrics:metrics-core:4.0.0"
     compile "io.dropwizard.metrics:metrics-servlets:4.0.0"
     compile 'javax.servlet:javax.servlet-api:3.1.0'
@@ -122,8 +128,8 @@ dependencies {
     compile 'javax.activation:activation:1.1.1'
 
     //NLP
-//    compile 'edu.emory.mathcs.nlp:nlp4j-api:1.1.3'
-//    compile 'edu.emory.mathcs.nlp:nlp4j-english:1.1.3'
+    compile 'edu.emory.mathcs.nlp:nlp4j-api:1.1.3'
+    compile 'edu.emory.mathcs.nlp:nlp4j-english:1.1.3'
 }
 
 configurations {
@@ -135,6 +141,7 @@ configurations {
 configurations.all {
     resolutionStrategy {
         force 'xml-apis:xml-apis:1.4.01'
+//        force 'javax.measure:unit-api:2.0-SNAPSHOT'
     }
 }
 

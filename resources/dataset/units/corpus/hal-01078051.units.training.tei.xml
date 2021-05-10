@@ -1,12 +1,12 @@
 <units xmlns="http://www.tei-c.org/ns/1.0">
 	<unit><base>AU</base></unit>
-	<unit><base>•</base></unit>
+	<unit>•</unit>
 	<unit><base>AU</base></unit>
 	<unit><base>AU</base></unit>
 	<unit><base>AU</base></unit>
 	<unit><base>AU</base></unit>
 	<unit><base>A U</base></unit>
-	<unit><base>•</base></unit>
+	<unit>•</unit>
 	<unit><base>AU</base></unit>
 	<unit><base>W</base> <base>m</base> <pow>−2</pow></unit>
 	<unit><base>AU</base></unit>

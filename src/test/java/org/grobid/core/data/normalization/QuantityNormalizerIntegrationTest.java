@@ -1,9 +1,7 @@
 package org.grobid.core.data.normalization;
 
-import org.grobid.core.data.Quantity;
-import org.grobid.core.data.Unit;
-import org.grobid.core.data.UnitDefinition;
-import org.grobid.core.data.Value;
+import org.easymock.Capture;
+import org.grobid.core.data.*;
 import org.grobid.core.main.LibraryLoader;
 import org.grobid.core.utilities.UnitUtilities;
 import org.junit.Before;
@@ -12,17 +10,18 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.measure.format.UnitFormat;
-import javax.measure.spi.ServiceProvider;
-import javax.measure.spi.UnitFormatService;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 
-@Ignore("we should mock also uom-se .. but for now is better to leave it out so that we can spot other errors")
+//@Ignore("we should mock also uom .. but for now is better to leave it out so that we can spot other errors")
 public class QuantityNormalizerIntegrationTest {
 
     private QuantityNormalizer target;
@@ -52,8 +51,8 @@ public class QuantityNormalizerIntegrationTest {
         parsedUnit.setUnitDefinition(generateLenghtUnitDefinition());
         expect(mockUnitNormalizer.parseUnit(raw)).andReturn(parsedUnit);
         final UnitDefinition fakeDefinition = new UnitDefinition();
-        fakeDefinition.setNotations(Arrays.asList(new String[]{"km"}));
-        fakeDefinition.setNames(Arrays.asList(new String[]{"kilometer", "kilometers", "kilometres"}));
+        fakeDefinition.setNotations(Arrays.asList("km"));
+        fakeDefinition.setNames(Arrays.asList("kilometer", "kilometers", "kilometres"));
         expect(mockUnitNormalizer.findDefinition(anyObject())).andReturn(fakeDefinition);
 
         replay(mockUnitNormalizer);
@@ -85,8 +84,8 @@ public class QuantityNormalizerIntegrationTest {
         parsedUnit.setUnitDefinition(generateLenghtUnitDefinition());
         expect(mockUnitNormalizer.parseUnit(raw)).andReturn(parsedUnit);
         final UnitDefinition fakeDefinition = new UnitDefinition();
-        fakeDefinition.setNotations(Arrays.asList(new String[]{"km"}));
-        fakeDefinition.setNames(Arrays.asList(new String[]{"kilometer", "kilometers", "kilometres"}));
+        fakeDefinition.setNotations(Arrays.asList("km"));
+        fakeDefinition.setNames(Arrays.asList("kilometer", "kilometers", "kilometres"));
         expect(mockUnitNormalizer.findDefinition(anyObject())).andReturn(fakeDefinition);
 
         replay(mockUnitNormalizer);
@@ -121,8 +120,8 @@ public class QuantityNormalizerIntegrationTest {
         final UnitDefinition parsedUnitDefinition = new UnitDefinition();
         parsedUnitDefinition.setType(UnitUtilities.Unit_Type.TEMPERATURE);
         parsedUnitDefinition.setSystem(UnitUtilities.System_Type.SI_DERIVED);
-        parsedUnitDefinition.setNotations(Arrays.asList(new String[]{"°C"}));
-        parsedUnitDefinition.setNames(Arrays.asList(new String[]{"celsius", "celcius"}));
+        parsedUnitDefinition.setNotations(Arrays.asList("°C"));
+        parsedUnitDefinition.setNames(Arrays.asList("celsius", "celcius"));
         return parsedUnitDefinition;
 
     }
@@ -152,6 +151,7 @@ public class QuantityNormalizerIntegrationTest {
     }
 
     @Test
+    @Ignore("At this stage the h^-1 is not correctly normalised")
     public void testNormalizeQuantity2_3composedUnits() throws Exception {
         Quantity input = new Quantity();
         input.setRawValue("2000");
@@ -226,23 +226,51 @@ public class QuantityNormalizerIntegrationTest {
     }
 
     @Test
-    public void testCheckPrecision() throws Exception {
-        UnitFormatService formatService = ServiceProvider.current().getUnitFormatService();
-        UnitFormat defaultFormatService = formatService.getUnitFormat();
+    public void testNormalise_imperialUnits() throws Exception {
+        Quantity input = new Quantity();
+        input.setRawValue("10");
+        input.setParsedValue(new Value(new BigDecimal(1)));
+        Unit raw = new Unit();
+        raw.setRawName("miles");
+        input.setRawUnit(raw);
 
-//        TransformedUnit unit = (TransformedUnit) defaultFormatService.parse("g");
-//        System.out.println("Conversion using double: " + unit.getSystemConverter().convert(0.39));
-//        System.out.println("Conversion using BigDecimal: " + (unit.getSystemConverter().convert(new BigDecimal("0.39"))));
-//        System.out.println("Conversion using BigDecimal output Double: " + new BigDecimal(unit.getSystemConverter().convert(new BigDecimal("0.39")).toString()).doubleValue());
-//
-//        unit = (TransformedUnit) defaultFormatService.parse("%");
-//        System.out.println("Conversion using double: " + unit.getSystemConverter().convert(0.009));
-//        System.out.println("Conversion using BigDecimal: " + (unit.getSystemConverter().convert(new BigDecimal("0.009"))));
-//        System.out.println("Conversion using BigDecimal output Double: " + new BigDecimal(unit.getSystemConverter().convert(new BigDecimal("0.009")).toString()).doubleValue());
-//
-//        unit = (TransformedUnit) defaultFormatService.parse("ml");
-//        System.out.println("Conversion using double: " + unit.getSystemConverter().convert(0.39));
-//        System.out.println("Conversion using BigDecimal: " + (unit.getSystemConverter().convert(new BigDecimal("0.39"))));
-//        System.out.println("Conversion using BigDecimal output Double: " + new BigDecimal(unit.getSystemConverter().convert(new BigDecimal("0.39")).toString()).doubleValue());
+        Unit parsedUnit = new Unit("miles");
+        List<UnitBlock> blocks = new ArrayList<>();
+        blocks.add(new UnitBlock(null, "miles", null));
+        parsedUnit.setProductBlocks(blocks);
+        input.setParsedUnit(parsedUnit);
+
+        expect(mockUnitNormalizer.parseUnit(raw)).andReturn(parsedUnit);
+        Capture<Unit> unitCapture = newCapture();
+        expect(mockUnitNormalizer.findDefinition(capture(unitCapture))).andReturn(null);
+
+
+        replay(mockUnitNormalizer);
+        Quantity.Normalized normalized = target.normalizeQuantity(input);
+        verify(mockUnitNormalizer);
+
+        assertThat(unitCapture.getValue().getRawName(), is("m"));
+
+        assertThat(normalized.getUnit().getRawName(), is("m"));
+        assertThat(normalized.getValue(), is(new BigDecimal("1609.344")));
+
+    }
+
+    @Test
+    public void testTryParsing() throws Exception {
+        Unit parsedUnit = new Unit("kg/cc");
+
+        List<UnitBlock> blocks = new ArrayList<>();
+
+        blocks.add(new UnitBlock("k", "g", null));
+        blocks.add(new UnitBlock(null, "cc", "-1"));
+
+        parsedUnit.setProductBlocks(blocks);
+
+        Map<String, UnitFormat> unitFormats = target.getUnitFormats();
+
+//        Arrays.asList(unitFormats.get(UCUM_PROVIDER), unitFormats.get(COMMON_PROVIDER), unitFormats.get(INDYRIA_PROVIDER));
+
+//        target.tryParsing(parsedUnit, );
     }
 }

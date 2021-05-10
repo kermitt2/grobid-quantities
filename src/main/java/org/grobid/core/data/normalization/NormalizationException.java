@@ -1,6 +1,6 @@
 package org.grobid.core.data.normalization;
 
-import javax.measure.format.ParserException;
+import javax.measure.format.MeasurementParseException;
 
 /**
  * Created by lfoppiano on 15.02.16.
@@ -10,7 +10,7 @@ public class NormalizationException extends Exception {
         super(s);
     }
 
-    public NormalizationException(String s, ParserException pe) {
+    public NormalizationException(String s, MeasurementParseException pe) {
         super(s, pe);
     }
 

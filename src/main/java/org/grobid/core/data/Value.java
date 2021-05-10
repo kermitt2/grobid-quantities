@@ -2,7 +2,6 @@ package org.grobid.core.data;
 
 import com.fasterxml.jackson.core.io.JsonStringEncoder;
 import com.fasterxml.jackson.core.util.BufferRecyclers;
-import com.google.common.base.MoreObjects;
 import org.grobid.core.utilities.OffsetPosition;
 
 import java.math.BigDecimal;
@@ -85,11 +84,12 @@ public class Value {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("rawValue", rawValue)
-                .add("structure", structure)
-                .add("numeric", numeric)
-                .toString();
+        final StringBuilder sb = new StringBuilder("Value{");
+        sb.append("rawValue='").append(rawValue).append('\'');
+        sb.append(", structure=").append(structure);
+        sb.append(", numeric=").append(numeric);
+        sb.append('}');
+        return sb.toString();
     }
 
     public String toJson() {
@@ -146,4 +146,6 @@ public class Value {
         json.append(" }");
         return json.toString();
     }
+
+
 }

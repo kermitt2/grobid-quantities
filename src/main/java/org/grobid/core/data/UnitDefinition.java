@@ -26,7 +26,7 @@ public class UnitDefinition {
     // standard notation, e.g. g for gram - there might be several notations for an unit
     private List<String> notations = null;
 
-    private boolean hasPrefixes = false;
+    private boolean supportsPrefixes = false;
 
     // If this unit doesn't have any transformation (e.g. pH intended as acidity)
     private boolean skipNormalisation = false;
@@ -171,5 +171,13 @@ public class UnitDefinition {
 
     public void setSkipNormalisation(boolean skipNormalisation) {
         this.skipNormalisation = skipNormalisation;
+    }
+
+    public boolean isSupportsPrefixes() {
+        return supportsPrefixes;
+    }
+
+    public void setSupportsPrefixes(boolean supportsPrefixes) {
+        this.supportsPrefixes = supportsPrefixes;
     }
 }
